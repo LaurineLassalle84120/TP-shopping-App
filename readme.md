@@ -1,10 +1,15 @@
 # Projet avec Expo
 
 1.Démarrer android studio
+
 2.Cliquer sur les trois petits point tout à droite
+
 3.Ouvrez le virtual device manager
+
 4.Lancer l'emulateur pixel 5
+
 5.Lancer le projet : `npm start`
+
 6.Lancer sur android : `a`
 
 
