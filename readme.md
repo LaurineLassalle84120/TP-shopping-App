@@ -1,10 +1,13 @@
-démarrer android studio
-cliquer sur les trois petits point tout à droite
-Ouvrez le virtual device manager
-lancer l'emulateur pixel 5
+# Projet avec Expo
 
-npm start
-a
+1.Démarrer android studio
+2.Cliquer sur les trois petits point tout à droite
+3.Ouvrez le virtual device manager
+4.Lancer l'emulateur pixel 5
+5.Lancer le projet : `npm start`
+6.Lancer sur android : `a`
+
+
 
 #bottom tabs : npm install @react-navigation/bottom-tabs
 menu en bas
