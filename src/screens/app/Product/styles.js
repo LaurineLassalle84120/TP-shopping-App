@@ -7,7 +7,8 @@ export const styles = StyleSheet.create({
 
   container: {
 
-    paddingBottom:200
+    paddingBottom:600,
+    position: 'relative',
   },
   title: {
     fontWeight:"800",
@@ -36,25 +37,57 @@ export const styles = StyleSheet.create({
     borderRadius:10,
     display:"flex",
     justifyContent:"center",
-    alignItems:"center"
+    alignItems:"center",
+    shadowColor: 'rgba(0, 0, 0, 0.5)', // Couleur de l'ombre
+    shadowOpacity: 0.8, // Opacité de l'ombre (0 à 1)
+    shadowRadius: 6, // Rayon de l'ombre
+    shadowOffset: {
+      width: 0, // Décalage horizontal de l'ombre
+      height: 2, // Décalage vertical de l'ombre
+    },
+    elevation: 4, // Élévation sur les plateformes Android
 
   },
   containerText:{
     backgroundColor:"white",
     padding: 24,
     borderRadius:10,
-    marginTop:-10
+    marginTop:-10,
+    
   },
   heart:{
-    color:colors.blue
+    color:colors.blue,
+    
   },
   image:{
     width:fullWidth,
-    height:"40%",
-    padding:4
+    height:"100%",
+    padding:4,
   
-    // objectFit:'contain',
+    objectFit:'cover',
     // borderRadius:10
   },
+  icon:{
+    width:20,
+    height:20,
+    margin:10
+  },
+  buttonBack:{
+    width:40,
+    height:40,
+    borderRadius:10,
+    backgroundColor:colors.white,
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    shadowColor: 'rgba(0, 0, 0, 0.5)', // Couleur de l'ombre
+    shadowOpacity: 0.8, // Opacité de l'ombre (0 à 1)
+    shadowRadius: 6, // Rayon de l'ombre
+    shadowOffset: {
+      width: 0, // Décalage horizontal de l'ombre
+      height: 2, // Décalage vertical de l'ombre
+    },
+    elevation: 4, // Élévation sur les plateformes Android
+  }
 
 })

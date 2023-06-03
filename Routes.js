@@ -66,6 +66,7 @@ const Routes = () => {
              <Stack.Screen
               name="Product"
               component={Product}
+              options={{  headerShown: false }}
             />
             <Stack.Screen
               name="Settings"

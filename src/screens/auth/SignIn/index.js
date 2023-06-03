@@ -25,7 +25,7 @@ export default function SignIn() {
 //api : https://dummyjson.com/docs/products
 //fonction de récupération du panier du user
   const recupCartUser = async (idUser) => {
-    // console.log("idUser",idUser);
+    console.log("idUser",idUser);
     await fetch('https://dummyjson.com/carts/user/'+idUser, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },

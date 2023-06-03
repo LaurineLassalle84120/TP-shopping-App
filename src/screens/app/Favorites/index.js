@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef,useContext } from 'react';
 import  {Text} from "react-native"
 import { products } from '../../../data/products';
 import {
@@ -11,6 +11,10 @@ import {
 } from 'react-native';
 import Header from '../../../components/Header';
 import FavoriteHomeItem from '../../../components/FavoriteHomeItem';
+import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../../../App';
+
+
+
 // import FavoriteHomeItem from '../../../components/FavoriteHomeItem';
 const RenderFavoritesItem = (item) => {
     // console.log('category**', item);
@@ -23,6 +27,31 @@ const RenderFavoritesItem = (item) => {
 };
 
 const Favorites = () => {
+    const {user, setUser} = useContext(UserContext);
+    const {APIProducts, setAPIProducts} = useContext(ProductsContext);
+    const {carts, setCarts} = useContext(CartsContext);
+    const {APICategories, setAPICategories} = useContext(CategoriesContext);
+
+    const {APICarts, setAPICarts} = useState([]);
+
+    // console.log("Favo:user",user);
+    
+    // console.log("Favo:products",APIProducts);
+    // console.log("Favo:carts ",carts);
+    // console.log("Favo:carts.carts ",carts.carts[0].products);
+    //fonction executée qu'au rechargement du composant
+    useEffect(() => {
+        console.log("début");
+
+        if (carts !== undefined ) {
+            const panier = carts.carts[0].products;
+            console.log("panier",panier);
+            // setAPICarts(panier);
+        }
+    
+    }, [carts]);//dès que le panier est set on initialise 
+
+    // console.log("APICarts:",APICarts);
     return (
         <SafeAreaView>
             <Header showSearch={false} title="Favorites"/>

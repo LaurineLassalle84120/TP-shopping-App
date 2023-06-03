@@ -16,21 +16,28 @@ export default function Product({ route }) {
 
   const { title,description,image,price } = route.params;
 
+  const onPress=()=>{
+    navigation.navigate("Home");
+  }
   return (
     <>
       <SafeAreaView>
         <ScrollView>
           <View style={styles.container}>
             <Image source={{ uri: image }} style={styles.image}/>
+            <TouchableOpacity  activeOpacity={0.6} style={styles.buttonBack} onPress={onPress}>
+              <Image source={require('../../../assets/back.png')} style={styles.icon}/>
+            </TouchableOpacity >
+            
             <View style={styles.containerText}>
               <Text style={styles.title}>{title}</Text>
-              <Text style={styles.price}>{price}</Text>
+              <Text style={styles.price}>{'$ '}{price}</Text>
               <Text style={styles.description}>{description}</Text>
               <View style={styles.button}>
                 <TouchableOpacity  activeOpacity={0.6} style={styles.buttongrey}  >
                     <FontAwesome  name="heart" color="red" size={26} style={styles.heart}/>
                 </TouchableOpacity >
-                  <Button title="Contact Seller" disabled={true} style={{ marginTop: 20,width:200,height:60 }} />
+                  <Button title="Contact Seller" disabled={true} style={{ marginTop: 20,width:"77%",height:60 }} />
               </View>
             </View>
           </View>

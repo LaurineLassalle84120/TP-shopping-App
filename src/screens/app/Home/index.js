@@ -38,23 +38,32 @@ export default function Home() {
     const [choiceCategory, setChoiceCategory] = useState("")
     const [allCategories, setAllCategories] = useState([])
     
+    function wait(seconds) {
+        return new Promise((resolve) => {
+          setTimeout(resolve, seconds * 1000);
+        });
+      }
+
     //fonction executée qu'au rechargement du composant
     useEffect(() => {
         console.log("début");
-
-        const updatedCategories = ["All",...APICategories ];
-        setAllCategories(updatedCategories);
+        // await wait(1); // Attendre 3 secondes
+        if (APICategories!== undefined) {
+            const updatedCategories = ["All",...APICategories ];
+            setAllCategories(updatedCategories);
+        }
+    
         // const Categories = [...APICategories, "All"];
         // setAPICategories(Categories);
         // allCategories = APICategories.unshift("All");//on rajoute la categorie All pour reset le filtre
-        if (APIProducts.products) {
+        if (APIProducts !== undefined) {
             setProductFiltered(APIProducts.products);
         }
         
        
-    }, []);
+    }, [APIProducts,APICategories]);//dès que les produits et les catégories sont set on initialise les states
     // console.log("Home:user",user);
-    // console.log("Home:products",APIProducts);
+    console.log("Home:products",APIProducts);
     // console.log("Home:carts ",carts);
     // console.log("Home:APICategories",APICategories);
     // console.log("Home:categories",categories);
