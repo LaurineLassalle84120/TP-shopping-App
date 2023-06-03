@@ -35,14 +35,26 @@ export default function Home() {
 
     //useState
     const [productFiltered, setProductFiltered] = useState([])
-    const [choiceCategory, setChoiceCategory] = useState(0)
+    const [choiceCategory, setChoiceCategory] = useState("")
+    const [allCategories, setAllCategories] = useState([])
+    
+    //fonction executée qu'au rechargement du composant
     useEffect(() => {
-        console.log("début s");
-        // setProductFiltered(products);
+        console.log("début");
+
+        const updatedCategories = ["All",...APICategories ];
+        setAllCategories(updatedCategories);
+        // const Categories = [...APICategories, "All"];
+        // setAPICategories(Categories);
+        // allCategories = APICategories.unshift("All");//on rajoute la categorie All pour reset le filtre
+        if (APIProducts.products) {
+            setProductFiltered(APIProducts.products);
+        }
+        
        
     }, []);
     // console.log("Home:user",user);
-    console.log("Home:products",APIProducts);
+    // console.log("Home:products",APIProducts);
     // console.log("Home:carts ",carts);
     // console.log("Home:APICategories",APICategories);
     // console.log("Home:categories",categories);
@@ -50,35 +62,38 @@ export default function Home() {
     //fonction de click sur la category
     const clickCat = (category) => {
 
-        // setProductFiltered([]);
-        // console.log("category.id", category.id);
-        // const choiceCat = category.id;
-        // let productsFilt = [];
+        setProductFiltered([]);
+        console.log("category", category);
+        const choiceCat = category;
+        let productsFilt = [];
 
-        // console.log("choiceCategory", choiceCat);
+        console.log("choiceCategory", choiceCat);
 
         // // console.log("element.category",element.category);
-        // if (choiceCat == 0) {//si la category choisie est ALL
-        //     productsFilt = productsFilt.concat(products);//on affiche tous les produits
+        if (choiceCat == "All") {//si la category choisie est ALL
+            productsFilt = APIProducts.products;//on affiche tous les produits
 
-        //     console.log("products", products);
-        //     console.log("productsFilt", productsFilt);
-        // } else {//sinon
-        //     products.forEach(element => {
-        //         if (element.category == choiceCat) {
-        //             console.log("ça match");
-        //             console.log("element:", element);
+          
+          
+        } else {//sinon
+            APIProducts.products.forEach(element => {
+                // console.log(element);
+         
+                console.log(element.category);
+                if (element.category == choiceCat) {
+                    console.log("ça match");
+                    console.log("element:", element);
 
-        //             productsFilt.push(element);//on ajoute les produits qui ont la catégory choisie
-        //             // setProductFiltered=(choiceCategory)
-        //         }
-        //     });
-        // }
+                    productsFilt.push(element);//on ajoute les produits qui ont la catégory choisie
+                    // setProductFiltered=(choiceCategory)
+                }
+            });
+        }
 
-        // console.log("products", products);
-        // console.log("productsFilt ", productsFilt);
-        // setProductFiltered(productsFilt);
-        // setChoiceCategory(category.id);
+        console.log("products", APIProducts);
+        console.log("productsFilt ", productsFilt);
+        setProductFiltered(productsFilt);
+        setChoiceCategory(category);
         // console.log(productFiltered);
     }
 
@@ -115,9 +130,13 @@ export default function Home() {
     return (
         <SafeAreaView>
             <Header showSearch={true} title="Find all you need" />
+            {/* <CategoryHomeItem category="All" key={57890}
+                onPress={() => clickCat("All")} /> */}
             <FlatList
                 // data={categories}
-                data={APICategories}
+                // data={APICategories}
+                data={allCategories}
+                
                 renderItem={RenderCategoryItem}
                 keyExtractor={item => item.id ? item.id.toString() : Math.random().toString()} // Vérifie si item.id est défini
                 // keyExtractor={item => String(item.id)}
@@ -126,9 +145,9 @@ export default function Home() {
 
             />
             <FlatList
-                data={APIProducts.products}
+                // data={APIProducts.products}
                 // data={APIProducts}
-                // data={productFiltered}
+                data={productFiltered}
                 renderItem={RenderProductItem}
                 keyExtractor={item => String(item.id)}
                 showsVerticalScrollIndicator={false}

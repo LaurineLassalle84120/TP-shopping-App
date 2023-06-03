@@ -50,8 +50,8 @@ function MyTabs() {
 const Routes = () => {
 
   const {user} = useContext(UserContext);
-console.log("********user",user)
-console.log("********type",typeof user)
+// console.log("********user",user)
+// console.log("********type",typeof user)
   return (
     <NavigationContainer>
       <Stack.Navigator>

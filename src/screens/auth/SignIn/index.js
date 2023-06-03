@@ -25,7 +25,7 @@ export default function SignIn() {
 //api : https://dummyjson.com/docs/products
 //fonction de récupération du panier du user
   const recupCartUser = async (idUser) => {
-    console.log("idUser",idUser);
+    // console.log("idUser",idUser);
     await fetch('https://dummyjson.com/carts/user/'+idUser, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
@@ -33,7 +33,7 @@ export default function SignIn() {
     })
     .then(res => res.json())
     .then(v => {
-      console.log("SignIn:Carts:",v);
+      // console.log("SignIn:Carts:",v);
       setCarts(v);//on set le cartsContext
 
     }
@@ -50,7 +50,7 @@ export default function SignIn() {
     })
     .then(res => res.json())
     .then(v => {
-        console.log("SignIn:Products :",v);
+        // console.log("SignIn:Products :",v);
         setAPIProducts(v);//on set le Context products
     }
     );
@@ -65,7 +65,7 @@ export default function SignIn() {
     })
     .then(res => res.json())
     .then(v => {
-        console.log("SignIn:Categories:",v);
+        // console.log("SignIn:Categories:",v);
         setAPICategories(v);//on set le userContext categories
     }
     );
@@ -98,7 +98,7 @@ export default function SignIn() {
       .then(v => {
         if(v.token) {//si l'api renvoi bien un token
           setUser(v)
-          console.log("user connect(v):",v)
+          // console.log("user connect(v):",v)
           //on récupère le panier du user
           recupCartUser(v.id);
           //on récupère les produits
@@ -119,7 +119,7 @@ export default function SignIn() {
     }
   }
 
-  console.log("user connect:",user)
+  // console.log("user connect:",user)
 
   return (
     <>
