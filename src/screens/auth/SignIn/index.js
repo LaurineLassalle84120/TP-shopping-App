@@ -50,7 +50,7 @@ export default function SignIn() {
     })
     .then(res => res.json())
     .then(v => {
-        console.log("SignIn:Products:",v);
+        console.log("SignIn:Products :",v);
         setAPIProducts(v);//on set le Context products
     }
     );
@@ -102,7 +102,7 @@ export default function SignIn() {
           //on récupère le panier du user
           recupCartUser(v.id);
           //on récupère les produits
-          // recupProducts();
+          recupProducts();
           recupCategories();
         }else{
           Alert.alert(v.message);

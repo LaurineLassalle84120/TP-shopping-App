@@ -37,12 +37,12 @@ export default function Home() {
     const [productFiltered, setProductFiltered] = useState([])
     const [choiceCategory, setChoiceCategory] = useState(0)
     useEffect(() => {
-        console.log("début");
+        console.log("début s");
         // setProductFiltered(products);
        
     }, []);
     // console.log("Home:user",user);
-    // console.log("Home:products",APIProducts.products);
+    console.log("Home:products",APIProducts);
     // console.log("Home:carts ",carts);
     // console.log("Home:APICategories",APICategories);
     // console.log("Home:categories",categories);
@@ -84,11 +84,11 @@ export default function Home() {
 
 
     const RenderCategoryItem = (item) => {
-        console.log('category**', item);
+        // console.log('category**', item);
         const category = item.item;
         return (
 
-            <CategoryHomeItem category={category}
+            <CategoryHomeItem category={category} key={category.id}
                 onPress={() => clickCat(category)} />
 
         );
@@ -101,7 +101,7 @@ export default function Home() {
 
         return (
             // <ProductHomeItem product={product} onPress={() => {
-            <ProductHomeItem product={product} onPress={() => {
+            <ProductHomeItem product={product} key={product.id} onPress={() => {
                 navigation.navigate('Product', { 
                     title: product.title,
                     price: product.price,
@@ -119,13 +119,15 @@ export default function Home() {
                 // data={categories}
                 data={APICategories}
                 renderItem={RenderCategoryItem}
-                keyExtractor={item => String(item.id)}
+                keyExtractor={item => item.id ? item.id.toString() : Math.random().toString()} // Vérifie si item.id est défini
+                // keyExtractor={item => String(item.id)}
                 showsVerticalScrollIndicator={false}
                 horizontal
 
             />
             <FlatList
                 data={APIProducts.products}
+                // data={APIProducts}
                 // data={productFiltered}
                 renderItem={RenderProductItem}
                 keyExtractor={item => String(item.id)}
