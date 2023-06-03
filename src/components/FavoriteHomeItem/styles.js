@@ -44,5 +44,9 @@ export const styles = StyleSheet.create({
   entypo:{
     color:colors.lightGrey,
     alignSelf:'flex-start'
+  },
+  icon:{
+    width:(width/ 15),
+    height:(width/ 15)
   }
 })

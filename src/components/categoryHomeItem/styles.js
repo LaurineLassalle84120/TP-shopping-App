@@ -9,6 +9,9 @@ export const styles = StyleSheet.create({
 
 
   container: {
+    display:"flex",
+    alignItems:"center",
+
     marginHorizontal:8,
     flexDirection: 'column',
     alignItems: 'center',
@@ -20,14 +23,16 @@ export const styles = StyleSheet.create({
 
   },
   image:{
-    width:28,
-    height:28,
+    width:38,
+    height:38,
     padding:4,
     // objectFit:'contain',
     // borderRadius:10
   },
   imageContainer:{
-  
+    display:"flex",
+    alignItems:"center",
+    justifyContent:"center",
     // flexDirection: 'column',
     backgroundColor:colors.white,
     padding: 4,

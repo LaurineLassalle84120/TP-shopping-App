@@ -5,8 +5,9 @@ import { AntDesign } from '@expo/vector-icons';
 import Input from '../../../components/input';
 import Checkbox from '../../../components/checkbox';
 import Button from '../../../components/button';
-import Lien from '../../../components/lien';
+
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 // import {
 //   GoogleSignin,
 //   GoogleSigninButton,
@@ -18,46 +19,26 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function SignUp() {
   const [isChecked, setIschecked] = useState(false);
   const [values, setValues] = useState('');
+  const navigation = useNavigation();
   const onChange = (key, value) => {
     setValues(v => ({ ...v, [key]: value }));
   }
   const onSignUp = () => {    
-    // console.log(values)
-     // Simple POST request with a JSON body using fetch
-    // const requestOptions = {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ 
-    //     name: postData.name,
-    //     role: postData.role,
-    //     email: postData.email,
-    //     password: postData.password  
-    //   })
-    // };
-    // fetch( `${config.urlServer}/api/users`, requestOptions)
-    //   // .then(response => response.json())
-    //   .then(function (res) {
-    //     // setLabelSubmit(res.data['hydra:totalItems'])
-    //     console.log(res.status);
-    //     if (res.status=="201"){
-          
-    //       setLabelSubmit("Utilisateur bien créer");
-    //     }else{
-    //       // console.log("no");
-    //       setLabelSubmit("Problème : l'utilisateur n'a pas été créé");
-    //     }
-    //     console.log(res);
-      
-    // })
+   
   }
+  //lors du click sur le lien
+  const handlePress = () => {
+    // Redirection vers la page SignIn
+    navigation.navigate('SignIn');
+  };
   return (
     <>
       <SafeAreaView>
         <ScrollView>
           <View style={styles.container}>
-            <Input style={styles.input} label='Name' placeholder="John Doe" onChangeText={v => onChange('name', v)} />
-            <Input style={styles.input} label='E-mail' placeholder="test@test.fr" onChangeText={v => onChange('email', v)} />
-            <Input style={styles.input} label='Password' placeholder="***********" isPassword onChangeText={v => onChange('password', v)} />
+            <Input style={styles.inputForm} label='Name' placeholder="John Doe" onChangeText={v => onChange('name', v)} />
+            <Input style={styles.inputForm} label='E-mail' placeholder="test@test.fr" onChangeText={v => onChange('email', v)} />
+            <Input style={styles.inputForm} label='Password' placeholder="***********" isPassword onChangeText={v => onChange('password', v)} />
             <View style={{flexDirection:'row',alignItems:'center'}}>
               <Checkbox isChecked={isChecked} setIschecked={setIschecked}></Checkbox><Text style={styles.agreeText}>I agree with <Text style={styles.agreeTextBold}>Terms </Text> & <Text style={styles.agreeTextBold}>Privacy</Text></Text>
 
@@ -74,7 +55,7 @@ export default function SignUp() {
               <AntDesign name="google" size={34} color="white" />
             </View>
 
-            <Pressable style={styles.divLien}>
+            <Pressable style={styles.divLien} onPress={handlePress}>
               <Text style={styles.textLien}>Already have an account? </Text>
               <Text style={styles.lien}>Sign In</Text>
             </Pressable>

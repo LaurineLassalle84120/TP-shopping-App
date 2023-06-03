@@ -12,6 +12,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Favorites from './src/screens/app/Favorites';
 import Profile from './src/screens/app/Profile';
 import Product from './src/screens/app/Product';
+import Settings from './src/screens/app/Settings';
 import { FontAwesome } from '@expo/vector-icons';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -20,8 +21,11 @@ function MyTabs() {
   return (
     <Tab.Navigator 
       screenOptions={{
-        activeTintColor: '#4F63AC', // Couleur des icônes des onglets actifs
+    
         headerShown:false
+      }}
+      tabBarOptions={{
+        activeTintColor: '#4F63AC', // Couleur des icônes des onglets actifs
       }}
     >
       <Tab.Screen options={{
@@ -62,7 +66,10 @@ console.log("********type",typeof user)
              <Stack.Screen
               name="Product"
               component={Product}
-             
+            />
+            <Stack.Screen
+              name="Settings"
+              component={Settings}
             />
 
           </>):

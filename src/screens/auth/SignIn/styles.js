@@ -4,7 +4,8 @@ export const styles = StyleSheet.create({
 
   container: {
     padding: 24,
-    paddingBottom:100
+    paddingBottom:100,
+    marginTop:-34
   },
   agreeTextBold: {
     fontWeight:'bold',

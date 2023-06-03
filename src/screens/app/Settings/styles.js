@@ -20,6 +20,16 @@ export const styles = StyleSheet.create({
     color:colors.grey,
     marginTop:5,
     marginBottom:10,
+  },
+  icon:{
+    width:24,
+    height:24
+  },
+  perso:{
+    display:"flex",
+    flexDirection:"row",
+    justifyContent:"space-between",
+    alignItems:"center"
   }
  
 

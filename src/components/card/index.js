@@ -5,27 +5,33 @@ import { colors } from '../../utils/colors';
 
 import { AntDesign } from '@expo/vector-icons'; 
 
-export default function Card({title,description}) {
+export default function Card({title,description,showArrow,inverseTitles}) {
 
     return (
-        <Pressable>
+       
             <View style={styles.container}>
                 <View>
-                    {/* <Text style={styles.title}>
-                        {title}
-                    </Text> */}
-                    <Text style={styles.title}>
+         
+                    <Text style={inverseTitles ? styles.desc : styles.title}>
                         {title}
                     </Text> 
-                    <Text style={styles.desc}>
+                    {description ? (//on test si la description est défini
+                    <Text style={inverseTitles ? styles.title : styles.desc}>
                         {description}
-                    </Text> 
-                   
+                    </Text> //si elle est pas définie on ne l'affiche pas:évite un décalage
+                   ) : null}
+
+
                 </View> 
-                <AntDesign name="rightcircleo" size={24} color={colors.blue} />
-             
+                {/* <AntDesign name="rightcircleo" size={24} color={colors.blue} /> */}
+                {showArrow?(
+                    <Image source={require('../../assets/arrow.png')} style={styles.icon}/>
+                ):(
+                    null
+                )}
+                
             </View>
-        </Pressable>
+  
 
 
       )

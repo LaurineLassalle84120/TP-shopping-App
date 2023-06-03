@@ -4,10 +4,12 @@ export const styles = StyleSheet.create({
 
   container: {
     padding: 24,
-    paddingBottom:100
+    paddingBottom:100,
+    marginTop:-34
   },
-  input:{
-   height:60 
+  inputForm:{
+   height:60,
+   marginTop:10
   },
   agreeTextBold: {
     fontWeight:'bold',

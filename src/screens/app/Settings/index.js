@@ -14,19 +14,27 @@ import {
 } from 'react-native';
 import Header from '../../../components/Header';
 
-const Settings = () => {
+const Settings =({ route }) => {
+    // const { title,description,image,price } = route.params;
     return (
         <SafeAreaView>
             <ScrollView>
                 <View style={styles.container}>
-                    <Header showSearch={false} title="Profile"/>
+                    {/* <Header showSearch={false} title="Profile"/> */}
                     <View style={styles.contenu}>
-                    
-                        <Text style={styles.mail}>Personal informations</Text>
-                        <Card title="My Listings" description="Already have 10 listing"/>
-                        <Card title="Settings" description="Account, FAQ, Contact"/>
-                       
-                    <Button title="Add a new listing" disabled={true} style={{ marginTop: 70,width:"100%",height:60 }} />
+                        <View style={styles.perso}>
+                           <Text style={styles.mail}>Personal informations</Text> 
+                           <Image source={require('../../../assets/edit.png')} style={styles.icon}/>
+                        </View>
+                        
+                        <Card title="Name" description="Bruno Pham" inverseTitles="true"/>
+                        <Card title="Email" description="bruno456@hotmail.com" inverseTitles="true"/>
+
+                        <Text style={styles.mail}>Help Center</Text> 
+                        <Card title="FAQ" description="" showArrow="true"/>
+                        <Card title="Contact Us" description="" showArrow="true"/>
+                        <Card title="Privacy & Terms" description="" showArrow="true"/>
+                  
                     </View>
                 </View>
             </ScrollView>
@@ -34,4 +42,4 @@ const Settings = () => {
     );
 };
 
-export default Profile;
+export default Settings;

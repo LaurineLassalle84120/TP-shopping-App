@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react'
-import { View, Text, Image, ScrollView, Alert,Pressable } from 'react-native'
+import { View, Text, ScrollView, Alert,Pressable } from 'react-native'
 import { styles } from './styles';
 import Input from '../../../components/input';
-import Checkbox from '../../../components/checkbox';
 import Button from '../../../components/button';
 import { AntDesign } from '@expo/vector-icons';
-import Lien from '../../../components/lien';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {UserContext, ProductsContext} from '../../../../App'
+import { useNavigation } from '@react-navigation/native';
 
 export default function SignIn() {
 
@@ -23,6 +22,7 @@ export default function SignIn() {
   const onChange = (key, value) => {
     setValues(v => ({ ...v, [key]: value }));
   }
+  const navigation = useNavigation();
 //api : https://dummyjson.com/docs/products
 //fonction de récupération du panier du user
   const recupCartUser = async (idUser) => {
@@ -55,7 +55,7 @@ export default function SignIn() {
         setProducts(v);//on set le userContext products
     }
     );
-}
+  }
 
   //fonction de récupération des catégories
   const recupCategories = async () => {
@@ -70,7 +70,12 @@ export default function SignIn() {
         setCategories(v);//on set le userContext categories
     }
     );
-}
+  }
+  //lors du click sur le lien
+  const handlePress = () => {
+    // Redirection vers la page SignUp
+    navigation.navigate('SignUp');
+  };
 
   const onSignIn = async () => {    
     // console.log(values)
@@ -136,7 +141,7 @@ export default function SignIn() {
             <View style={styles.google}>
               <AntDesign name="google" size={34} color="white" />
             </View>
-            <Pressable style={styles.divLien}>
+            <Pressable style={styles.divLien} onPress={handlePress}>
               <Text style={styles.textLien}>Don't have an account? </Text>
               <Text style={styles.lien}>Sign Up</Text>
             </Pressable>
