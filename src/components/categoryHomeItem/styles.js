@@ -23,9 +23,9 @@ export const styles = StyleSheet.create({
 
   },
   image:{
-    width:38,
-    height:38,
-    padding:4,
+    width:18,
+    height:18,
+    // padding:14,
     // objectFit:'contain',
     // borderRadius:10
   },
@@ -34,8 +34,8 @@ export const styles = StyleSheet.create({
     alignItems:"center",
     justifyContent:"center",
     // flexDirection: 'column',
-    backgroundColor:colors.white,
-    padding: 4,
+    backgroundColor:colors.darkGrey,
+    padding: 14,
     borderRadius: 8,
     marginBottom: 8
   },

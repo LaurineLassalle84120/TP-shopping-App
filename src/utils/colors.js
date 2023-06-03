@@ -8,5 +8,6 @@ export const colors = {
     lightGrey:'#C5C5C5',
     veryLightGrey:'#F0F0F0',
     otherGrey:"#DADADA",
-    darkGrey:"#3F4A59"
+    darkGrey:"#3F4A59",
+    anotherGrey:"#606060"
 }

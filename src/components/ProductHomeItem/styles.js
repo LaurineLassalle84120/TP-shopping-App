@@ -15,12 +15,20 @@ export const styles = StyleSheet.create({
 
   title: {
     fontSize: 12,
-
+    marginBottom:6,
+    marginTop:6,
+    color:colors.anotherGrey,
+    fontSize:14
   },
   image:{
     width:(width/ 2)-16,
     height:200,
     objectFit:'contain',
     borderRadius:10
+  },
+  price:{
+    fontWeight:"700",
+    fontSize:14
   }
+ 
 })

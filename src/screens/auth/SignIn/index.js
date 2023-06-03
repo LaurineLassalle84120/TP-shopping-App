@@ -5,7 +5,7 @@ import Input from '../../../components/input';
 import Button from '../../../components/button';
 import { AntDesign } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {UserContext, ProductsContext} from '../../../../App'
+import {UserContext, ProductsContext, CartsContext, CategoriesContext} from '../../../../App'
 import { useNavigation } from '@react-navigation/native';
 
 export default function SignIn() {
@@ -14,10 +14,9 @@ export default function SignIn() {
   const [values, setValues] = useState('');
 
   const {user, setUser} = useContext(UserContext);
-
-  // const {cart, setCart} = useContext(UserContext);
-  const {products, setProducts} = useContext(ProductsContext);
-  // const {categories, setCategories} = useContext(UserContext);
+  const {carts, setCarts} = useContext(CartsContext);
+  const {APIProducts, setAPIProducts} = useContext(ProductsContext);
+  const {APICategories, setAPICategories} = useContext(CategoriesContext);
 
   const onChange = (key, value) => {
     setValues(v => ({ ...v, [key]: value }));
@@ -34,8 +33,8 @@ export default function SignIn() {
     })
     .then(res => res.json())
     .then(v => {
-      console.log("Panier:",v);
-      setCart(v);//on set le userContext cart
+      console.log("SignIn:Carts:",v);
+      setCarts(v);//on set le cartsContext
 
     }
       );
@@ -51,8 +50,8 @@ export default function SignIn() {
     })
     .then(res => res.json())
     .then(v => {
-        console.log("Products:",v);
-        setProducts(v);//on set le userContext products
+        console.log("SignIn:Products:",v);
+        setAPIProducts(v);//on set le Context products
     }
     );
   }
@@ -66,8 +65,8 @@ export default function SignIn() {
     })
     .then(res => res.json())
     .then(v => {
-        console.log("Categories:",v);
-        setCategories(v);//on set le userContext categories
+        console.log("SignIn:Categories:",v);
+        setAPICategories(v);//on set le userContext categories
     }
     );
   }
@@ -103,8 +102,8 @@ export default function SignIn() {
           //on récupère le panier du user
           recupCartUser(v.id);
           //on récupère les produits
-          recupProducts();//TODO:à tester
-          recupCategories();//TODO:à tester
+          // recupProducts();
+          recupCategories();
         }else{
           Alert.alert(v.message);
         }
@@ -121,6 +120,7 @@ export default function SignIn() {
   }
 
   console.log("user connect:",user)
+
   return (
     <>
       <SafeAreaView>
