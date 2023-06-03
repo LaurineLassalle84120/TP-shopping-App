@@ -37,6 +37,13 @@ export const styles = StyleSheet.create({
         marginRight:"5%",
         flexGrow: 0, // Permet à l'icône de ne pas prendre de l'espace supplémentaire
         flexShrink: 0, // Empêche l'icône de rétrécir lorsqu'elle est cachée
+    },
+    iconBack:{
+        width:20,
+        height:20,
+        marginLeft:"3%",
+        flexGrow: 0, // Permet à l'icône de ne pas prendre de l'espace supplémentaire
+        flexShrink: 0, // Empêche l'icône de rétrécir lorsqu'elle est cachée
     }
 
 })

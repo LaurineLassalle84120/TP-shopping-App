@@ -2,7 +2,8 @@ import {StyleSheet} from 'react-native';
 import { colors } from '../../utils/colors';
 export const styles = StyleSheet.create({
     container:{
-        marginVertical:16
+        marginVertical:16,
+        height:100
     },
     label:{
         color:colors.blue,
@@ -14,7 +15,9 @@ export const styles = StyleSheet.create({
         borderWidth:1,
         borderColor: colors.grey,
         borderRadius:14,
-        flexDirection:'row'
+        flexDirection:'row',
+        display:"flex",
+        alignContent:"center"
     },
     input:{
         paddingHorizontal:17,
@@ -26,8 +29,14 @@ export const styles = StyleSheet.create({
     eye:{
         width:24,
         height:24, 
-        marginTop:24,
+        marginTop:18,
         marginRight:10
+    },
+    pressableEye:{
+        flexDirection:'row',
+        display:"flex",
+        alignContent:"center"
+
     }
   
 })

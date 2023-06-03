@@ -13,6 +13,7 @@ import Favorites from './src/screens/app/Favorites';
 import Profile from './src/screens/app/Profile';
 import Product from './src/screens/app/Product';
 import Settings from './src/screens/app/Settings';
+import NewProduct from './src/screens/app/NewProduct';
 import { FontAwesome } from '@expo/vector-icons';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -71,6 +72,11 @@ const Routes = () => {
             <Stack.Screen
               name="Settings"
               component={Settings}
+            />
+            <Stack.Screen
+              name="NewProduct"
+              component={NewProduct}
+              options={{  headerShown: false }}
             />
 
           </>):

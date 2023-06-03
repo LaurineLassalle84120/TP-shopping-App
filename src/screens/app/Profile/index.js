@@ -35,7 +35,9 @@ const Profile = () => {
                             <Card title="Settings" description="Account, FAQ, Contact"  showArrow="true"/>
                         </Pressable>
                        
-                    <Button title="Add a new listing" disabled={true} style={{ marginTop: "90%",width:"100%",height:60 }} />
+                    <Button title="Add a new listing"  style={{ marginTop: "90%",width:"100%",height:60 }} onPress={() => {
+                                navigation.navigate('NewProduct');
+                            }}/>
                     </View>
                 </View>
             </ScrollView>
