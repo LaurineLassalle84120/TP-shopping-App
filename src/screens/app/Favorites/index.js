@@ -21,7 +21,7 @@ const RenderFavoritesItem = (item) => {
     const product = item.item;
 
     return (
-            <FavoriteHomeItem product={product} />
+            <FavoriteHomeItem product={product}  />
         
     );
 };
@@ -32,8 +32,8 @@ const Favorites = () => {
     const {carts, setCarts} = useContext(CartsContext);
     const {APICategories, setAPICategories} = useContext(CategoriesContext);
 
-    const {APICarts, setAPICarts} = useState([]);
-
+  
+    const [APICarts, setAPICarts] = useState([]);
     // console.log("Favo:user",user);
     
     // console.log("Favo:products",APIProducts);
@@ -46,7 +46,7 @@ const Favorites = () => {
         if (carts !== undefined ) {
             const panier = carts.carts[0].products;
             console.log("panier",panier);
-            // setAPICarts(panier);
+            setAPICarts(panier);
         }
     
     }, [carts]);//dès que le panier est set on initialise 
@@ -56,7 +56,8 @@ const Favorites = () => {
         <SafeAreaView>
             <Header showSearch={false} title="Favorites"/>
             <FlatList
-                data={products}
+                // data={products}
+                data={APICarts}
                 renderItem={RenderFavoritesItem}
                 keyExtractor={item => String(item.id)}
                 showsVerticalScrollIndicator={true}
