@@ -6,7 +6,7 @@ import { colors } from '../../utils/colors';
 import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../../App';
 
 
-export default function FavoriteHomeItem({product,showCross,showTrash}) {
+export default function FavoriteHomeItem({product,showCross,showTrash,onPress}) {
     const {user, setUser} = useContext(UserContext);
     const {APIProducts, setAPIProducts} = useContext(ProductsContext);
     const {carts, setCarts} = useContext(CartsContext);
@@ -16,8 +16,19 @@ export default function FavoriteHomeItem({product,showCross,showTrash}) {
     // console.log("FavoriteHomeItem:product",parseInt((product.id)))
     // console.log("FavoriteHomeItem:product",typeof(parseInt(product.id)))
 
+    //fonction de suppression d'un produit dans le cart
+    const removeFromCart = (productId) => {
+        const cartItems = carts.carts[0].products; // Extraction du tableau de produits
+        const updatedCart = cartItems.filter((product) => product.id !== productId);
+        setCarts({ ...carts, carts: [{ ...carts.carts[0], products: updatedCart }] });
+    };
+
+    const onPressCross = () => {
+        // console.log(product.id);
+        removeFromCart(product.id);
+    };
     return (
-        <Pressable style={styles.container}>
+        <Pressable style={styles.container} onPress={onPress}>
            
                 <View style={styles.container2}>
                     <Image source={{ uri: APIProducts.products[product.id-1].thumbnail }} style={styles.image}/>
@@ -27,7 +38,11 @@ export default function FavoriteHomeItem({product,showCross,showTrash}) {
                     </View>
                 </View>
                 {/* <Entypo  style={styles.entypo} name="cross" size={24} color={colors.blue} /> */}
-                {showCross?(<Image source={require('../../assets/close.png')} style={styles.icon}/>):null}
+                {showCross?(
+                    <Pressable onPress={onPressCross}>
+                        <Image source={require('../../assets/close.png')} style={styles.icon}/>
+                    </Pressable>
+                ):null}
                 {showTrash?(<Image source={require('../../assets/delete.png')} style={styles.icon}/>):null}
         </Pressable>
     );

@@ -41,11 +41,11 @@ const Panier = () => {
     // console.log("Favo:carts.carts ",carts.carts[0].products);
     //fonction executée qu'au rechargement du composant
     useEffect(() => {
-        console.log("début");
+        // console.log("début");
 
         if (carts !== undefined ) {
             const panier = carts.carts[0].products;
-            console.log("panier",panier);
+            // console.log("panier",panier);
             setAPICarts(panier);
         }
     

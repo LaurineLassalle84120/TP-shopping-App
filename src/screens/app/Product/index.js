@@ -21,10 +21,10 @@ export default function Product({ route }) {
   useEffect(() => {
     if (carts !== undefined ) {
       const panier = carts.carts[0].products;
-      console.log("panier",panier);
+      // console.log("panier",panier);
       panier.forEach(element => {
-        console.log("element.id",element.id);
-        console.log("id",productId);
+        // console.log("element.id",element.id);
+        // console.log("id",productId);
         if (element.id==productId){//si le produit affiché est dans les favori
           setProductFavori(true);
         }
@@ -33,16 +33,16 @@ export default function Product({ route }) {
   }, [carts]);//dès que le panier est set on initialise 
 
   const onPressHeart=()=>{//met en favori ou enlève des favori le produit
-    console.log("heart")
+    //console.log("heart")
     setProductFavori(!productFavori);//met à jour le state
     //met à jour la panier
     if(!productFavori){//on doit ajouter le produit au panier
-      console.log("add")
+      //console.log("add")
       addToCart(productId);
     }else{//on doit enlever le produit au panier
-      console.log("productId",productId)
+      //console.log("productId",productId)
       removeFromCart(productId);
-      console.log("remove")
+      //console.log("remove")
     }
 
   }
@@ -58,7 +58,7 @@ export default function Product({ route }) {
     const cartItems = carts.carts[0].products; // Extraction du tableau de produits
     //rajoute le produit de la page au favori
     const updatedCart = [...cartItems, { id: productId,title:title,price:price,quantity:1 }];
-    console.log("updatedCart",updatedCart)
+    //console.log("updatedCart",updatedCart)
     // console.log("APIProductss:",APIProducts.products[])
     // await fetch('https://dummyjson.com/products/'+productId)
     // .then(res => res.json())

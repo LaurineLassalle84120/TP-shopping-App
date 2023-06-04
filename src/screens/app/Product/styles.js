@@ -2,7 +2,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 import { colors } from '../../../utils/colors';
 
 const {fullWidth,fullHeight} = Dimensions.get('window');
-console.log("fullWidth",fullWidth)
+//console.log("fullWidth",fullWidth)
 export const styles = StyleSheet.create({
 
   container: {

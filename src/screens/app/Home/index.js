@@ -47,7 +47,7 @@ export default function Home() {
 
     //fonction executée qu'au rechargement du composant
     useEffect(() => {
-        console.log("début");
+        // console.log("début");
         // await wait(1); // Attendre 3 secondes
         if (APICategories!== undefined) {
             const updatedCategories = ["All",...APICategories ];
@@ -64,7 +64,7 @@ export default function Home() {
        
     }, [APIProducts,APICategories]);//dès que les produits et les catégories sont set on initialise les states
     // console.log("Home:user",user);
-    console.log("Home:products",APIProducts);
+    // console.log("Home:products",APIProducts);
     // console.log("Home:carts ",carts);
     // console.log("Home:APICategories",APICategories);
     // console.log("Home:categories",categories);
@@ -73,11 +73,11 @@ export default function Home() {
     const clickCat = (category) => {
 
         setProductFiltered([]);
-        console.log("category", category);
+        // console.log("category", category);
         const choiceCat = category;
         let productsFilt = [];
 
-        console.log("choiceCategory", choiceCat);
+        // console.log("choiceCategory", choiceCat);
 
         // // console.log("element.category",element.category);
         if (choiceCat == "All") {//si la category choisie est ALL
@@ -87,10 +87,10 @@ export default function Home() {
             APIProducts.products.forEach(element => {
                 // console.log(element);
          
-                console.log(element.category);
+                // console.log(element.category);
                 if (element.category == choiceCat) {
-                    console.log("ça match");
-                    console.log("element:", element);
+                    // console.log("ça match");
+                    // console.log("element:", element);
 
                     productsFilt.push(element);//on ajoute les produits qui ont la catégory choisie
                     // setProductFiltered=(choiceCategory)
@@ -98,8 +98,8 @@ export default function Home() {
             });
         }
 
-        console.log("products", APIProducts);
-        console.log("productsFilt ", productsFilt);
+        // console.log("products", APIProducts);
+        // console.log("productsFilt ", productsFilt);
         setProductFiltered(productsFilt);
         setChoiceCategory(category);
         // console.log(productFiltered);
@@ -139,7 +139,7 @@ export default function Home() {
     };
     const onChangeText = async (text) =>{
         // setKeyword(text);
-        console.log("text:",text)
+        // console.log("text:",text)
         const uri = "search?q=" + text
 
         await fetch('https://dummyjson.com/products/search?q='+text)

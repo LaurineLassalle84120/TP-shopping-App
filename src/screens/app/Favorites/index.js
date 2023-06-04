@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef,useContext } from 'react';
 import  {Text,ScrollView} from "react-native"
 import { products } from '../../../data/products';
+import { useNavigation } from '@react-navigation/native';
 import {
     SafeAreaView,
     Pressable,
@@ -15,16 +16,7 @@ import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../
 import {styles} from './styles'
 
 
-// import FavoriteHomeItem from '../../../components/FavoriteHomeItem';
-const RenderFavoritesItem = (item) => {
-    // console.log('category**', item);
-    const product = item.item;
 
-    return (
-            <FavoriteHomeItem product={product} showCross={true} />
-        
-    );
-};
 
 const Favorites = () => {
     const {user, setUser} = useContext(UserContext);
@@ -32,20 +24,44 @@ const Favorites = () => {
     const {carts, setCarts} = useContext(CartsContext);
     const {APICategories, setAPICategories} = useContext(CategoriesContext);
 
-  
+    const navigation = useNavigation();
     const [APICarts, setAPICarts] = useState([]);
     // console.log("Favo:user",user);
     
     // console.log("Favo:products",APIProducts);
     // console.log("Favo:carts ",carts);
     // console.log("Favo:carts.carts ",carts.carts[0].products);
+    // import FavoriteHomeItem from '../../../components/FavoriteHomeItem';
+    const RenderFavoritesItem = (item) => {
+
+        // console.log('category**', item);
+        const product = item.item;
+
+        return (
+                <FavoriteHomeItem product={product} key={product.id} showCross={true} onPress={() => {
+                    console.log("product.id",);
+                    let idProduct = product.id;
+                    // console.log(APIProducts.products);
+                    const productInCart = APIProducts.products.find((product) => product.id === idProduct);
+                    console.log("productInCart",productInCart.thumbnail)
+                    navigation.navigate('Product', { 
+                        title: product.title,
+                        price: product.price,
+                        description: product.description,
+                        image: productInCart.thumbnail,//image non présente dans le cart, obligé d'aller la chercher dans products
+                        productId: product.id
+                    })
+                }} />
+            
+        );
+    };
     //fonction executée qu'au rechargement du composant
     useEffect(() => {
-        console.log("début");
+        // console.log("début");
 
         if (carts !== undefined ) {
             const panier = carts.carts[0].products;
-            console.log("panier",panier);
+            // console.log("panier",panier);
             setAPICarts(panier);
         }
     
