@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef,useContext } from 'react';
-import  {Text} from "react-native"
+import  {Text,ScrollView} from "react-native"
 import { products } from '../../../data/products';
 import {
     SafeAreaView,
@@ -12,7 +12,7 @@ import {
 import Header from '../../../components/Header';
 import FavoriteHomeItem from '../../../components/FavoriteHomeItem';
 import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../../../App';
-
+import {styles} from './styles'
 
 
 // import FavoriteHomeItem from '../../../components/FavoriteHomeItem';
@@ -54,17 +54,22 @@ const Panier = () => {
     // console.log("APICarts:",APICarts);
     return (
         <SafeAreaView>
+            <ScrollView>
             <Header showSearch={false} showReturn={true} title="My listings"/>
-            <FlatList
-                // data={products}
-                data={APICarts}
-                renderItem={RenderFavoritesItem}
-                keyExtractor={item => String(item.id)}
-                showsVerticalScrollIndicator={true}
-                numColumns={1}
-                ListFooterComponent={<View style={{height:100}}></View>}
-                // horizontal
-            />
+                <View style={styles.container}>
+                    
+                    <FlatList
+                        // data={products}
+                        data={APICarts}
+                        renderItem={RenderFavoritesItem}
+                        keyExtractor={item => String(item.id)}
+                        showsVerticalScrollIndicator={true}
+                        numColumns={1}
+                        ListFooterComponent={<View style={{height:100}}></View>}
+                        // horizontal
+                    />
+                </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };

@@ -29,14 +29,12 @@ const Profile = () => {
 
     useEffect(() => {
         if (carts !== undefined ) {
-            let lenght = carts.carts[0].totalProducts;
-        
-            console.log("début");
-            console.log("Profil:carts",carts);
-            console.log("Profil:carts:lenght",carts.carts[0].totalProducts);
-            setLenghtCarts(parseInt(carts.carts[0].totalProducts));
+            const cartItems = carts.carts[0].products;
+            const cartItemsLength = cartItems.length;
+
+            setLenghtCarts(cartItemsLength);
         }
-    }, [carts]);//dès que le apnier est disponible
+    }, [carts]);//dès que le panier est disponible
 
 
     return (
