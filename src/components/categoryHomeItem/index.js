@@ -17,7 +17,7 @@ export default function CategoryHomeItem({category, onPress,selected }) {
                 {selected ?(
                     <Foundation name="star" size={24} color="white" />
                 ):(
-                    <Foundation name="star" size={24} color="black" />
+                    <Foundation name="star" size={24} color="#303030" />
                 )}
              
             </View>

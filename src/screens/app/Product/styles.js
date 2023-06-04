@@ -55,8 +55,12 @@ export const styles = StyleSheet.create({
     marginTop:-10,
     
   },
-  heart:{
+  heartFavoriTrue:{
     color:colors.blue,
+    
+  },
+  heartFavoriFalse:{
+    color:colors.dashgrey,
     
   },
   image:{

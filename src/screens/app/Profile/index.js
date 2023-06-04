@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React,{useContext,useEffect,useState} from 'react';
 import  {Text} from "react-native"
 import { styles } from './styles';
 import Card from '../../../components/card';
@@ -20,10 +20,25 @@ import Header from '../../../components/Header';
 
 const Profile = () => {
 
-    const {user,setUser} = useContext(UserContext);
-    const {cart,setCart} = useContext(CartsContext);
-    console.log("Profil:cartz",cart)
+    const {user,setUser} = useContext(UserContext);//info du user
+    const {carts,setCarts} = useContext(CartsContext);//panier du user
+    
+    const [ lenghtCarts, setLenghtCarts ] = useState(0); //nbr d'item dans le panier (carts)
+
     const navigation = useNavigation();
+
+    useEffect(() => {
+        if (carts !== undefined ) {
+            let lenght = carts.carts[0].totalProducts;
+        
+            console.log("début");
+            console.log("Profil:carts",carts);
+            console.log("Profil:carts:lenght",carts.carts[0].totalProducts);
+            setLenghtCarts(parseInt(carts.carts[0].totalProducts));
+        }
+    }, [carts]);//dès que le apnier est disponible
+
+
     return (
         <SafeAreaView>
             <ScrollView>
@@ -35,7 +50,7 @@ const Profile = () => {
                         <Pressable onPress={() => {
                                 navigation.navigate('Panier');
                             }}>
-                            <Card title="My Listings" description="Already have 10 listing" showArrow="true"/>
+                            <Card title="My Listings" description={`Already have ${lenghtCarts} listing`} showArrow="true"/>
                         </Pressable>
                         <Pressable onPress={() => {
                                 navigation.navigate('Settings');

@@ -11,10 +11,10 @@ export default function FavoriteHomeItem({product,showCross,showTrash}) {
     const {APIProducts, setAPIProducts} = useContext(ProductsContext);
     const {carts, setCarts} = useContext(CartsContext);
     const {APICategories, setAPICategories} = useContext(CategoriesContext);
-    console.log("FavoriteHomeItem:APIproducts",APIProducts.products[86].thumbnail)
-    console.log("FavoriteHomeItem:product",typeof(APIProducts.products[0].thumbnail))
-    console.log("FavoriteHomeItem:product",parseInt((product.id)))
-    console.log("FavoriteHomeItem:product",typeof(parseInt(product.id)))
+    // console.log("FavoriteHomeItem:APIproducts",APIProducts.products[86].thumbnail)
+    // console.log("FavoriteHomeItem:product",typeof(APIProducts.products[0].thumbnail))
+    // console.log("FavoriteHomeItem:product",parseInt((product.id)))
+    // console.log("FavoriteHomeItem:product",typeof(parseInt(product.id)))
 
     return (
         <Pressable style={styles.container}>
