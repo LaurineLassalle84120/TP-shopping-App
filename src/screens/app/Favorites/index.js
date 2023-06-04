@@ -39,11 +39,11 @@ const Favorites = () => {
 
         return (
                 <FavoriteHomeItem product={product} key={product.id} showCross={true} onPress={() => {
-                    console.log("product.id",);
+                    // console.log("product.id",);
                     let idProduct = product.id;
                     // console.log(APIProducts.products);
                     const productInCart = APIProducts.products.find((product) => product.id === idProduct);
-                    console.log("productInCart",productInCart.thumbnail)
+                    // console.log("productInCart",productInCart.thumbnail)
                     navigation.navigate('Product', { 
                         title: product.title,
                         price: product.price,

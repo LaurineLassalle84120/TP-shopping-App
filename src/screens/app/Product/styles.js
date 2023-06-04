@@ -7,7 +7,9 @@ export const styles = StyleSheet.create({
 
   container: {
 
-    paddingBottom:600,
+    // paddingBottom:350,
+    paddingBottom:"101%",
+    // height:"101%",
     position: 'relative',
   },
   title: {
@@ -65,7 +67,7 @@ export const styles = StyleSheet.create({
   },
   image:{
     width:fullWidth,
-    height:"100%",
+    height:"80%",
     padding:4,
   
     objectFit:'cover',

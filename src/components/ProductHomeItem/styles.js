@@ -10,15 +10,18 @@ export const styles = StyleSheet.create({
 
   container: {
     marginHorizontal:8,
-    marginTop:15
+    marginTop:15,
+    display:"flex",
+    // flexWrap: 'wrap'
   },
 
   title: {
-    fontSize: 12,
+    // fontSize: 12,
     marginBottom:6,
     marginTop:6,
     color:colors.anotherGrey,
-    fontSize:14
+    fontSize:14,
+    flexWrap: 'wrap'
   },
   image:{
     width:(width/ 2)-16,

@@ -7,6 +7,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {UserContext, ProductsContext, CartsContext, CategoriesContext} from '../../../../App'
 import { useNavigation } from '@react-navigation/native';
+import { storeData, getData } from '../../../utils/storage';
 
 export default function SignIn() {
 
@@ -23,6 +24,8 @@ export default function SignIn() {
   }
   const navigation = useNavigation();
 //api : https://dummyjson.com/docs/products
+
+
 //fonction de récupération du panier du user
   const recupCartUser = async (idUser) => {
     //console.log("idUser",idUser);

@@ -1,24 +1,20 @@
+//Imports
+//React
 import React,{useContext,useEffect,useState} from 'react';
-import  {Text} from "react-native"
+import {Text,SafeAreaView,Pressable,ScrollView,View} from 'react-native';
+//Style
 import { styles } from './styles';
+//Composants
 import Card from '../../../components/card';
 import Button from '../../../components/button';
-// import {UserContext} from '../../../../App';
-import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../../../App';
-import { useNavigation } from '@react-navigation/native';
-import {
-    SafeAreaView,
-    Pressable,
-    FlatList,
-    ScrollView,
-    Image,
-    View
-} from 'react-native';
 import Header from '../../../components/Header';
-
-
+//Navigation
+import { useNavigation } from '@react-navigation/native';
+//Contexts
+import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../../../App';
 
 const Profile = () => {
+
 
     const {user,setUser} = useContext(UserContext);//info du user
     const {carts,setCarts} = useContext(CartsContext);//panier du user
@@ -56,9 +52,9 @@ const Profile = () => {
                             <Card title="Settings" description="Account, FAQ, Contact"  showArrow="true"/>
                         </Pressable>
                        
-                    <Button title="Add a new listing"  style={{ marginTop: "90%",width:"100%",height:60 }} onPress={() => {
+                        <Button title="Add a new listing"  style={styles.button} onPress={() => {
                                 navigation.navigate('NewProduct');
-                            }}/>
+                        }}/>
                     </View>
                 </View>
             </ScrollView>

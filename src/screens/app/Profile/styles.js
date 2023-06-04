@@ -6,11 +6,18 @@ const {fullWidth,fullHeight} = Dimensions.get('window');
 export const styles = StyleSheet.create({
 
   container: {
-
-    paddingBottom:200
+    height:700,
+    // paddingBottom:200
+    display:"flex",
+    justifyContent:"flex-start",
+    alignContent:"center"
   },
   contenu:{
-    padding:20
+    height:700,
+    padding:20,
+    display:"flex",
+    justifyContent:"flex-start",
+    alignContent:"center"
   },
   name: {
     fontSize:20,
@@ -20,6 +27,11 @@ export const styles = StyleSheet.create({
     color:colors.grey,
     marginTop:5,
     marginBottom:10,
+  },
+  button:{
+    alignSelf:"flex-end", 
+    width:"100%",
+    height:60 
   }
  
 

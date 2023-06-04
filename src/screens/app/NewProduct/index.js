@@ -43,7 +43,7 @@ const NewProduct =({ route }) => {
                         <Input label='Category' placeholder="Select the category" onChangeText={v => onChange('password', v)} />
                         <Input label='Price' placeholder="Enter price in USD" onChangeText={v => onChange('username', v)} />
                         <Input multiline inputStyle={styles.inputStyle} inputContainerStyle={styles.inputDesc} label='Description' placeholder="Tell us more..." onChangeText={v => onChange('username', v)} />
-                        <Button title="Submit"  style={{ marginTop: "20%",width:"100%",height:60 }} />
+                        <Button title="Submit"  style={{ marginTop: 80,width:"100%",height:60 }} />
                   
                     </View>
                 </View>

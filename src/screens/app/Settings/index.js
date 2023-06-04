@@ -1,20 +1,20 @@
-import React from 'react';
-import  {Text} from "react-native"
+//Imports
+//React
+import React,{useContext,useEffect,useState} from 'react';
+import {SafeAreaView,ScrollView,Image,View,Text} from 'react-native';
+//Style
 import { styles } from './styles';
+//Composants
 import Card from '../../../components/card';
 import Button from '../../../components/button';
-import { useNavigation } from '@react-navigation/native';
-import {
-    SafeAreaView,
-    Pressable,
-    FlatList,
-    ScrollView,
-    Image,
-    View
-} from 'react-native';
 import Header from '../../../components/Header';
+//Navigation
+import { useNavigation } from '@react-navigation/native';
+//Contexts
+import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../../../App';
 
 const Settings =({ route }) => {
+    const {user,setUser} = useContext(UserContext);//info du user
     // const { title,description,image,price } = route.params;
     return (
         <SafeAreaView>
@@ -27,8 +27,8 @@ const Settings =({ route }) => {
                            <Image source={require('../../../assets/edit.png')} style={styles.icon}/>
                         </View>
                         
-                        <Card title="Name" description="Bruno Pham" inverseTitles="true"/>
-                        <Card title="Email" description="bruno456@hotmail.com" inverseTitles="true"/>
+                        <Card title="Name" description={user.firstName + " " + user.lastName} inverseTitles="true"/>
+                        <Card title="Email" description={user.email} inverseTitles="true"/>
 
                         <Text style={styles.mail}>Help Center</Text> 
                         <Card title="FAQ" description="" showArrow="true"/>

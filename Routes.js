@@ -58,7 +58,7 @@ const Routes = () => {
     <NavigationContainer>
       <Stack.Navigator>
         {
-        user ?//TODO: remettre user
+        user ?
          ( <>
             <Stack.Screen
               name="MyTabs"
