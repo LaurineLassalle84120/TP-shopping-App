@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
 
   title: {
     fontSize: 12,
+    marginBottom:10
 
   },
   image:{
