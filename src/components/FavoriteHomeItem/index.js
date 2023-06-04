@@ -6,7 +6,7 @@ import { colors } from '../../utils/colors';
 import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../../App';
 
 
-export default function FavoriteHomeItem({product}) {
+export default function FavoriteHomeItem({product,showCross,showTrash}) {
     const {user, setUser} = useContext(UserContext);
     const {APIProducts, setAPIProducts} = useContext(ProductsContext);
     const {carts, setCarts} = useContext(CartsContext);
@@ -27,7 +27,8 @@ export default function FavoriteHomeItem({product}) {
                     </View>
                 </View>
                 {/* <Entypo  style={styles.entypo} name="cross" size={24} color={colors.blue} /> */}
-                <Image source={require('../../assets/close.png')} style={styles.icon}/>
+                {showCross?(<Image source={require('../../assets/close.png')} style={styles.icon}/>):null}
+                {showTrash?(<Image source={require('../../assets/delete.png')} style={styles.icon}/>):null}
         </Pressable>
     );
 };

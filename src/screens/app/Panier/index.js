@@ -21,12 +21,12 @@ const RenderFavoritesItem = (item) => {
     const product = item.item;
 
     return (
-            <FavoriteHomeItem product={product} showCross={true} />
+            <FavoriteHomeItem product={product} showTrash={true} />
         
     );
 };
 
-const Favorites = () => {
+const Panier = () => {
     const {user, setUser} = useContext(UserContext);
     const {APIProducts, setAPIProducts} = useContext(ProductsContext);
     const {carts, setCarts} = useContext(CartsContext);
@@ -54,7 +54,7 @@ const Favorites = () => {
     // console.log("APICarts:",APICarts);
     return (
         <SafeAreaView>
-            <Header showSearch={false} title="Favorites"/>
+            <Header showSearch={false} showReturn={true} title="My listings"/>
             <FlatList
                 // data={products}
                 data={APICarts}
@@ -69,4 +69,4 @@ const Favorites = () => {
     );
 };
 
-export default Favorites;
+export default Panier;

@@ -34,18 +34,16 @@ export const styles = StyleSheet.create({
     alignItems:"center",
     justifyContent:"center",
     // flexDirection: 'column',
-    backgroundColor:colors.darkGrey,
+    backgroundColor:colors.white,
     padding: 14,
     borderRadius: 8,
-    marginBottom: 8
+    marginBottom: 8,
+    width:50,
+    height:50
   },
   imageContainerSelected:{
-  
-    // flexDirection: 'column',
-    backgroundColor:colors.grey,
-    padding: 8,
-    borderRadius: 8,
-    marginBottom: 8
-  }
+    backgroundColor:colors.darkGrey,
+  },
+ 
   
 })

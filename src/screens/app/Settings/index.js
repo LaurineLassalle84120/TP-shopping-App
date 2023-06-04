@@ -20,7 +20,7 @@ const Settings =({ route }) => {
         <SafeAreaView>
             <ScrollView>
                 <View style={styles.container}>
-                    {/* <Header showSearch={false} title="Profile"/> */}
+                    <Header showSearch={false} showReturn={true} title="Settings"/>
                     <View style={styles.contenu}>
                         <View style={styles.perso}>
                            <Text style={styles.mail}>Personal informations</Text> 

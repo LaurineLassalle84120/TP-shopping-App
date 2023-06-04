@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         alignItems:'center',
         display:'flex',
         flexDirection:'row',
-
+     
         justifyContent:'space-between',
         marginTop: "12%",
         height:"15%",
@@ -26,12 +26,15 @@ export const styles = StyleSheet.create({
     search:{
         marginLeft:"5%",
         color:colors.blue,
+
         flexGrow: 0, // Permet à l'icône de ne pas prendre de l'espace supplémentaire
         flexShrink: 0, // Empêche l'icône de rétrécir lorsqu'elle est cachée
+        marginRight:-20
     }
     ,
     logout:{
         // alignItems:"flex-end"
+        marginLeft:-20
     },
     buttongrey:{
         marginRight:"5%",
@@ -41,9 +44,20 @@ export const styles = StyleSheet.create({
     iconBack:{
         width:20,
         height:20,
+        // marginLeft:"5%",
+        // flexGrow: 0, // Permet à l'icône de ne pas prendre de l'espace supplémentaire
+        // flexShrink: 0, // Empêche l'icône de rétrécir lorsqu'elle est cachée
+        // marginRight:"-6%",
+        flex:0,
+
+    },
+    iconBackPressable:{
         marginLeft:"3%",
-        flexGrow: 0, // Permet à l'icône de ne pas prendre de l'espace supplémentaire
-        flexShrink: 0, // Empêche l'icône de rétrécir lorsqu'elle est cachée
+    },
+    inputSearch:{
+        flex:1,
+        marginLeft:"10%"
     }
+
 
 })

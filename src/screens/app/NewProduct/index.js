@@ -5,6 +5,7 @@ import Card from '../../../components/card';
 import Button from '../../../components/button';
 import Input from '../../../components/input';
 import { useNavigation } from '@react-navigation/native';
+import { AntDesign } from '@expo/vector-icons';
 import {
     SafeAreaView,
     Pressable,
@@ -21,18 +22,28 @@ const NewProduct =({ route }) => {
         <SafeAreaView>
             <ScrollView>
                 <View style={styles.container}>
-                    <Header showSearch={false} title="Create a new listing"/>
+                    <Header showSearch={false} showReturn={true} title="Create a new listing"/>
                     <View style={styles.contenu}>
-                        <View style={styles.perso}>
-                           <Text style={styles.mail}>Upload photos</Text> 
-
-                           <Image source={require('../../../assets/close.png')} style={styles.icon}/>
+                    <Text style={styles.mail}>Upload photos</Text> 
+                        <View style={styles.flex}>
+                            <View style={styles.perso}>
+                            
+                            <Pressable style={styles.addPhoto}>
+                                <AntDesign  name="pluscircle" color={"#DADADA"} size={30} />
+                            </Pressable>
+                            
+                            </View>
+                            <View style={styles.photoView}>
+                                <Image source={require('../../../assets/lampe.png')} style={styles.photo}/>
+                                <Image source={require('../../../assets/close.png')} style={styles.icon}/>
+                            </View>
                         </View>
+                   
                         <Input label='Title' placeholder="Listing title" onChangeText={v => onChange('username', v)} />
                         <Input label='Category' placeholder="Select the category" onChangeText={v => onChange('password', v)} />
                         <Input label='Price' placeholder="Enter price in USD" onChangeText={v => onChange('username', v)} />
                         <Input multiline inputStyle={styles.inputStyle} inputContainerStyle={styles.inputDesc} label='Description' placeholder="Tell us more..." onChangeText={v => onChange('username', v)} />
-                        <Button title="Submit"  style={{ marginTop: "90%",width:"100%",height:60 }} />
+                        <Button title="Submit"  style={{ marginTop: "20%",width:"100%",height:60 }} />
                   
                     </View>
                 </View>

@@ -3,7 +3,8 @@ import  {Text} from "react-native"
 import { styles } from './styles';
 import Card from '../../../components/card';
 import Button from '../../../components/button';
-import {UserContext} from '../../../../App';
+// import {UserContext} from '../../../../App';
+import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../../../App';
 import { useNavigation } from '@react-navigation/native';
 import {
     SafeAreaView,
@@ -18,7 +19,10 @@ import Header from '../../../components/Header';
 
 
 const Profile = () => {
+
     const {user,setUser} = useContext(UserContext);
+    const {cart,setCart} = useContext(CartsContext);
+    console.log("Profil:cartz",cart)
     const navigation = useNavigation();
     return (
         <SafeAreaView>
@@ -28,7 +32,11 @@ const Profile = () => {
                     <View style={styles.contenu}>
                         <Text style={styles.name}>{user.firstName + " " + user.lastName}</Text>
                         <Text style={styles.mail}>{user.email}</Text>
-                        <Card title="My Listings" description="Already have 10 listing" showArrow="true"/>
+                        <Pressable onPress={() => {
+                                navigation.navigate('Panier');
+                            }}>
+                            <Card title="My Listings" description="Already have 10 listing" showArrow="true"/>
+                        </Pressable>
                         <Pressable onPress={() => {
                                 navigation.navigate('Settings');
                             }}>

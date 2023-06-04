@@ -37,7 +37,8 @@ export default function Home() {
     const [productFiltered, setProductFiltered] = useState([])
     const [choiceCategory, setChoiceCategory] = useState("")
     const [allCategories, setAllCategories] = useState([])
-    
+    const [keyword, setKeyword] = useState('');
+
     function wait(seconds) {
         return new Promise((resolve) => {
           setTimeout(resolve, seconds * 1000);
@@ -82,8 +83,6 @@ export default function Home() {
         if (choiceCat == "All") {//si la category choisie est ALL
             productsFilt = APIProducts.products;//on affiche tous les produits
 
-          
-          
         } else {//sinon
             APIProducts.products.forEach(element => {
                 // console.log(element);
@@ -113,7 +112,9 @@ export default function Home() {
         return (
 
             <CategoryHomeItem category={category} key={category.id}
-                onPress={() => clickCat(category)} />
+                onPress={() => clickCat(category)} 
+                selected={choiceCategory === category}//si la catégorie choisie correspond à l'item que l'on affiche
+                />
 
         );
     };
@@ -135,10 +136,23 @@ export default function Home() {
             }} />
         );
     };
+    const onChangeText = async (text) =>{
+        // setKeyword(text);
+        console.log("text:",text)
+        const uri = "search?q=" + text
 
+        await fetch('https://dummyjson.com/products/search?q='+text)
+        .then(res => res.json())
+        .then(v => {
+            // console.log("Home:Search:",v);
+            // setCarts(v);//on set le cartsContext
+            setProductFiltered(v.products);
+          }
+            );
+    }
     return (
         <SafeAreaView>
-            <Header showSearch={true} title="Find all you need" />
+            <Header showSearch={true} showReturn={false} onSearch={true} title="Find all you need" onChangeText={onChangeText}  />
             {/* <CategoryHomeItem category="All" key={57890}
                 onPress={() => clickCat("All")} /> */}
             <FlatList
