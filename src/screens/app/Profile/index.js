@@ -13,6 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 //Contexts
 import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../../../App';
 
+
 const Profile = () => {
 
 
@@ -44,12 +45,12 @@ const Profile = () => {
                         <Pressable onPress={() => {
                                 navigation.navigate('Panier');
                             }}>
-                            <Card title="My Listings" description={`Already have ${lenghtCarts} listing`} showArrow="true"/>
+                            <Card title="My Listings" description={`Already have ${lenghtCarts} listing`} showArrow="true" modeEdit={false}/>
                         </Pressable>
                         <Pressable onPress={() => {
                                 navigation.navigate('Settings');
                             }}>
-                            <Card title="Settings" description="Account, FAQ, Contact"  showArrow="true"/>
+                            <Card title="Settings" description="Account, FAQ, Contact"  showArrow="true" modeEdit={false}/>
                         </Pressable>
                        
                         <Button title="Add a new listing"  style={styles.button} onPress={() => {

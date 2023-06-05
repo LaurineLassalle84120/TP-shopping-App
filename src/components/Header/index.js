@@ -5,12 +5,16 @@ import { FontAwesome,MaterialIcons  } from '@expo/vector-icons';
 import { colors } from '../../utils/colors';
 import {UserContext} from '../../../App';
 import { useNavigation } from '@react-navigation/native';
+//Async Storage
+import { storeData, getData, removeData } from '../../utils/storage';
 
 export default function Header({title, onBackPress, onLogout,showReturn, showSearch,showLogOut, onSearch,onChangeText}) {
     const {user,setUser} = useContext(UserContext);
     const navigation = useNavigation();
     const onLogOutPress = () => {
-        setUser(null);
+        setUser(null);//on déconnecte l'user
+        removeData("email")//on supprime ces identifiants dans le asyncStorage
+        removeData("password")
         // console.log("******OnLogOutPress",user);
         // console.log("ciychdgfs");
       };

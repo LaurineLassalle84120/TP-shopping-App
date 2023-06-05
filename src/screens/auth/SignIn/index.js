@@ -1,18 +1,30 @@
-import React, { useContext, useState } from 'react'
+//Imports
+//React
+import React, { useContext, useState,useEffect } from 'react'
 import { View, Text, ScrollView, Alert,Pressable } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context';
+//Style
 import { styles } from './styles';
+//Composants
 import Input from '../../../components/input';
 import Button from '../../../components/button';
-import { AntDesign } from '@expo/vector-icons';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import {UserContext, ProductsContext, CartsContext, CategoriesContext} from '../../../../App'
+//Navigation
 import { useNavigation } from '@react-navigation/native';
-import { storeData, getData } from '../../../utils/storage';
+//Contexts
+import {UserContext, ProductsContext, CartsContext, CategoriesContext} from '../../../../App'
+//Icons
+import { AntDesign } from '@expo/vector-icons';
+//Async Storage
+import { storeData, getData, removeData } from '../../../utils/storage';
 
 export default function SignIn() {
 
   const [isChecked, setIschecked] = useState(false);
-  const [values, setValues] = useState('');
+  // const [values, setValues] = useState('');
+  const [values, setValues] = useState({
+    username: '', // Modifier la valeur initiale pour éviter les erreurs de contrôle non contrôlé
+    password: '', // Modifier la valeur initiale pour éviter les erreurs de contrôle non contrôlé
+  });
 
   const {user, setUser} = useContext(UserContext);
   const {carts, setCarts} = useContext(CartsContext);
@@ -25,6 +37,16 @@ export default function SignIn() {
   const navigation = useNavigation();
 //api : https://dummyjson.com/docs/products
 
+
+  useEffect(() => {
+    const fetchUserCredentials = async () => {
+      const email = await getData("email");//on récupère dans le async storage l'email
+      const password = await getData("password");//on récupère dans le async storage le password
+      setValues((prevValues) => ({ ...prevValues, username: email, password: password }));//on set les states values avec
+    };
+
+    fetchUserCredentials();
+  }, []);//a chaque chargement du composant
 
 //fonction de récupération du panier du user
   const recupCartUser = async (idUser) => {
@@ -100,12 +122,15 @@ export default function SignIn() {
       .then(res => res.json())
       .then(v => {
         if(v.token) {//si l'api renvoi bien un token
-          setUser(v)
+          storeData("email",values.username)//stockage de l'email dans l'asyncStorage
+          storeData("password",values.password)//stockage du password dans l'asyncStorage
+          setUser(v)//sauvegarde du user dans le UserContext
           // console.log("user connect(v):",v)
           //on récupère le panier du user
           recupCartUser(v.id);
           //on récupère les produits
           recupProducts();
+          //on récupère les catégories
           recupCategories();
         }else{
           Alert.alert(v.message);
@@ -130,8 +155,8 @@ export default function SignIn() {
         <ScrollView>
           <View style={styles.container}>
 
-            <Input label='E-mail' placeholder="test@test.fr" onChangeText={v => onChange('username', v)} />
-            <Input label='Password' placeholder="***********" isPassword onChangeText={v => onChange('password', v)} />
+            <Input label='E-mail' value={values.username} placeholder="test@test.fr" onChangeText={v => onChange('username', v)} />
+            <Input label='Password' value={values.password} placeholder="***********" isPassword onChangeText={v => onChange('password', v)} />
            
             <View style={styles.bouton}>
               <Button title="Sign In" onPress={onSignIn} disabled={false} style={{marginTop:20}}/>
