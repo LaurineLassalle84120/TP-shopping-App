@@ -1,22 +1,25 @@
 import React, { useContext, } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // Screens
 import SplashScreen from './src/screens/auth/SplashScreen';
 import SignIn from './src/screens/auth/SignIn';
 import SignUp from './src/screens/auth/SignUp';
 import Home from './src/screens/app/Home';
-import { UserContext } from './App';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Favorites from './src/screens/app/Favorites';
 import Profile from './src/screens/app/Profile';
 import Product from './src/screens/app/Product';
 import Settings from './src/screens/app/Settings';
 import Panier from './src/screens/app/Panier';
 import NewProduct from './src/screens/app/NewProduct';
+//Context
+import { UserContext } from './App';
+//Icons
 import { FontAwesome } from '@expo/vector-icons';
-const Tab = createBottomTabNavigator();
+
+const Tab = createBottomTabNavigator();//créer les onglets et les composants à afficher pour chaque onglet
 const Stack = createNativeStackNavigator();
 
 function MyTabs() {
@@ -55,7 +58,7 @@ const Routes = () => {
 // console.log("********user",user)
 // console.log("********type",typeof user)
   return (
-    <NavigationContainer>
+    <NavigationContainer> 
       <Stack.Navigator>
         {
         user ?

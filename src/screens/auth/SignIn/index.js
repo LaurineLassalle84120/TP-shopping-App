@@ -38,14 +38,15 @@ export default function SignIn() {
 //api : https://dummyjson.com/docs/products
 
 
-  useEffect(() => {
+  useEffect(() => {//au démarrage de la page
+    //on va chercher les identifiants du user dans l'asyncstorage
     const fetchUserCredentials = async () => {
-      const email = await getData("email");//on récupère dans le async storage l'email
+      const username = await getData("username");//on récupère dans le async storage le username
       const password = await getData("password");//on récupère dans le async storage le password
-      setValues((prevValues) => ({ ...prevValues, username: email, password: password }));//on set les states values avec
+      setValues((prevValues) => ({ ...prevValues, username: username, password: password }));//on set les states values avec
     };
-
     fetchUserCredentials();
+
   }, []);//a chaque chargement du composant
 
 //fonction de récupération du panier du user
@@ -95,6 +96,28 @@ export default function SignIn() {
     }
     );
   }
+
+  //on va chercher les informations personnelles du user
+  const fetchUserInformations = async () => {
+    const asyncFirstName = await getData("firstName");//on récupère dans le async storage le firstName
+    const asyncLastName = await getData("lastName");//on récupère dans le async storage le lastName
+    const asyncEmail = await getData("email");//on récupère dans le async storage l'email
+    
+    if(asyncFirstName && asyncLastName && asyncEmail ){//si on a toutes les informations
+        console.log("asyncFirstName:",asyncFirstName)
+        console.log("asyncLastName:",asyncLastName)
+        console.log("asyncEmail:",asyncEmail)
+
+        setUser((prevUser) => ({//on va set le userContext
+          ...prevUser,
+          email: asyncEmail,
+          firstName:asyncFirstName,
+          lastName:asyncLastName
+        }));
+
+    }}
+   
+
   //lors du click sur le lien
   const handlePress = () => {
     // Redirection vers la page SignUp
@@ -122,7 +145,7 @@ export default function SignIn() {
       .then(res => res.json())
       .then(v => {
         if(v.token) {//si l'api renvoi bien un token
-          storeData("email",values.username)//stockage de l'email dans l'asyncStorage
+          storeData("username",values.username)//stockage du username dans l'asyncStorage
           storeData("password",values.password)//stockage du password dans l'asyncStorage
           setUser(v)//sauvegarde du user dans le UserContext
           // console.log("user connect(v):",v)
@@ -132,6 +155,8 @@ export default function SignIn() {
           recupProducts();
           //on récupère les catégories
           recupCategories();
+          //on récupère les informations personnelles du user (AsyncStorage)
+          fetchUserInformations();
         }else{
           Alert.alert(v.message);
         }

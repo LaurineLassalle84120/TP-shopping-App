@@ -16,13 +16,15 @@ import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../
 import { FontAwesome5 } from '@expo/vector-icons';
 //colors
 import { colors } from '../../../utils/colors';
-
+//Async Storage
+import { storeData, getData, removeData } from '../../../utils/storage';
 
 const Settings =({ route }) => {
     //States
     const [modeEdit,setModeEdit] = useState(false);
     const [firstNameValue,setFirstNameValue] = useState("");
     const [lastNameValue,setLastNameValue] = useState("");
+    const [userNameValue,setUserNameValue] = useState("");
     const [emailValue,setEmailValue] = useState("");
     
     //Context
@@ -41,6 +43,9 @@ const Settings =({ route }) => {
                 lastName:lastNameValue
             }));
             setModeEdit(!modeEdit)
+            storeData("firstName",firstNameValue)//stockage du prénom dans l'asyncStorage
+            storeData("lastName",lastNameValue)//stockage du nom dans l'asyncStorage
+            storeData("email",emailValue)//stockage de l'email dans l'asyncStorage
         }else{//sinon on affiche un message
             Alert.alert("Veuillez remplir les champs");
         }
@@ -51,7 +56,13 @@ const Settings =({ route }) => {
           setFirstNameValue(user.firstName);
           setLastNameValue(user.lastName);
           setEmailValue(user.email);
+      
+        //   setFirstNameValue(getData("firstName"));
+        //   setLastNameValue(getData("lastName"));
+        //   setEmailValue(getData("email"));
+        //   setUserNameValue(user.username);
         }
+        console.log(user)
       }, [user]);//a chaque changement de user (login)
 
     //fonction lors de l'appuie sur edit (infos personnelles)
@@ -97,6 +108,12 @@ const Settings =({ route }) => {
                         value={lastNameValue}
                         onChangeText={setLastNameValue}/>
 
+                        {/* <Card title="UserName" 
+                        description={user.username} 
+                        inverseTitles="true"
+                        modeEdit={modeEdit} 
+                        value={userNameValue}
+                        onChangeText={setUserNameValue}/> */}
 
                         <Card title="Email" 
                         description={user.email} 

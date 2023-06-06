@@ -15,14 +15,11 @@ export default function Header({title, onBackPress, onLogout,showReturn, showSea
         setUser(null);//on déconnecte l'user
         removeData("email")//on supprime ces identifiants dans le asyncStorage
         removeData("password")
-        // console.log("******OnLogOutPress",user);
-        // console.log("ciychdgfs");
+   
       };
-    //   console.log("******en dehors",user);
-    // const onChangeText = () =>{
-    //     // console.log("search")
 
-    // }
+
+
     return (
         <View style={styles.container}>
             {showSearch?<FontAwesome  style={styles.search} name="search" color="grey" size={16} />:null}
