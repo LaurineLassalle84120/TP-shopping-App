@@ -13,7 +13,7 @@ export default function Header({title, onBackPress, onLogout,showReturn, showSea
     const navigation = useNavigation();
     const onLogOutPress = () => {
         setUser(null);//on déconnecte l'user
-        removeData("email")//on supprime ces identifiants dans le asyncStorage
+        removeData("username")//on supprime ces identifiants dans le asyncStorage
         removeData("password")
    
       };
