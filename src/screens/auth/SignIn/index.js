@@ -8,6 +8,7 @@ import { styles } from './styles';
 //Composants
 import Input from '../../../components/input';
 import Button from '../../../components/button';
+import Header from '../../../components/Header';
 //Navigation
 import { useNavigation } from '@react-navigation/native';
 //Contexts
@@ -178,8 +179,9 @@ export default function SignIn() {
     <>
       <SafeAreaView>
         <ScrollView>
+      
           <View style={styles.container}>
-
+         
             <Input label='E-mail' value={values.username} placeholder="test@test.fr" onChangeText={v => onChange('username', v)} />
             <Input label='Password' value={values.password} placeholder="***********" isPassword onChangeText={v => onChange('password', v)} />
            

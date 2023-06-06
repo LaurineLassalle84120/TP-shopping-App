@@ -18,6 +18,8 @@ import NewProduct from './src/screens/app/NewProduct';
 import { UserContext } from './App';
 //Icons
 import { FontAwesome } from '@expo/vector-icons';
+//Utils
+import { colors } from '../TP-shopping-App/src/utils/colors';
 
 const Tab = createBottomTabNavigator();//créer les onglets et les composants à afficher pour chaque onglet
 const Stack = createNativeStackNavigator();
@@ -124,12 +126,24 @@ const Routes = () => {
             <Stack.Screen
               name="SignIn"
               component={SignIn}
-              options={{ title: 'SignIn' }}
+              options={{ title: 'Sign In',
+              headerTintColor: colors.blue, // Couleur du texte de l'en-tête
+              headerTitleStyle: {
+                fontWeight: 'bold', // Style du texte de l'en-tête
+                fontSize:26
+              },
+               }}
             />
             <Stack.Screen
               name="SignUp"
               component={SignUp}
-              options={{ title: 'SignUp' }}
+              options={{ title: 'Sign Up',
+              headerTintColor: colors.blue, // Couleur du texte de l'en-tête
+              headerTitleStyle: {
+                fontWeight: 'bold', // Style du texte de l'en-tête
+                fontSize:26
+              },
+               }}
             />
           </>)
         }
