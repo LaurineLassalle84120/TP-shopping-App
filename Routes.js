@@ -38,18 +38,43 @@ function MyTabs() {
           <FontAwesome  name="home" color={color} size={26} />
         )
       }} name="Home" component={Home} />
+
       <Tab.Screen options={{
         tabBarIcon: ({ color }) => (
           <FontAwesome  name="bookmark" color={color} size={26} />
         )
       }} name="Favorites" component={Favorites} />
+
       <Tab.Screen options={{
         tabBarIcon: ({ color }) => (
           <FontAwesome  name="user" color={color} size={26} />
         )
-      }} name="Profile" component={Profile} />
+      // }} name="Profile" component={Profile} />
+      }} name="Profile" component={ProfileStack} />
     </Tab.Navigator>
   );
+}
+
+const ProfileStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen //sous menu du bouton profile
+        name="Profile"
+        component={Profile}
+        options={{  headerShown: false }}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={Settings}
+        options={{  headerShown: false }}
+      />
+      <Stack.Screen
+        name="Panier"
+        component={Panier}
+        options={{  headerShown: false }}
+      />
+    </Stack.Navigator>
+  )
 }
 
 const Routes = () => {
