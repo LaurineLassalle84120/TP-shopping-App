@@ -20,7 +20,7 @@ import { UserContext } from './App';
 //Icons
 import { FontAwesome } from '@expo/vector-icons';
 //Utils
-import { colors } from '../TP-shopping-App/src/utils/colors';
+import { colors } from './src/utils/colors';
 
 const Tab = createBottomTabNavigator();//créer les onglets et les composants à afficher pour chaque onglet
 const Stack = createNativeStackNavigator();
