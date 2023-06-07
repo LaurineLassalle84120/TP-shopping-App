@@ -60,14 +60,7 @@ export default function Product({ route }) {
     const updatedCart = [...cartItems, { id: productId,title:title,price:price,quantity:1 }];
     //console.log("updatedCart",updatedCart)
     // console.log("APIProductss:",APIProducts.products[])
-    // await fetch('https://dummyjson.com/products/'+productId)
-    // .then(res => res.json())
-    // .then((product) => {
-    //   console.log(product)
-    // })
-    // .catch((error) => {
-    //   console.log('Erreur lors de la récupération des détails du produit :', error);
-    // });
+   
     setCarts({ ...carts, carts: [{ ...carts.carts[0], products: updatedCart }] });
   };
 

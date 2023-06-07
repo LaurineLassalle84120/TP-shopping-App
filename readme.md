@@ -22,3 +22,4 @@ icon : npm install --save react-native-vector-icons
 icon : https://oblador.github.io/react-native-vector-icons/
 
 Async storage : npm install @react-native-async-storage/async-storage
+Liste déroulante Picker : npm install @react-native-picker/picker --save

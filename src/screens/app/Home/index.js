@@ -35,7 +35,7 @@ export default function Home() {
 
     //useState
     const [productFiltered, setProductFiltered] = useState([])
-    const [choiceCategory, setChoiceCategory] = useState("")
+    const [choiceCategory, setChoiceCategory] = useState("All")
     const [allCategories, setAllCategories] = useState([])
     const [keyword, setKeyword] = useState('');
 

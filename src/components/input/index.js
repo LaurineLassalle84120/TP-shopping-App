@@ -23,6 +23,7 @@ export default function Input({ label, isPassword, value, placeholder, onChangeT
             textAlignVertical={multiline ? 'top' : 'center'}
             multiline={multiline}
           />
+           
           {isPassword ?
             <Pressable onPress={onEyePress} style={styles.pressableEye}>
               <Image style={styles.eye} source={isPasswordVisible ? require('../../assets/eye_closed.png') : require('../../assets/eye.png')}></Image>
