@@ -145,7 +145,8 @@ export default function Home() {
                     price: product.price,
                     description: product.description,
                     image: product.thumbnail,
-                    productId: product.id
+                    productId: product.id,
+                    images:product.images
                  })
             }} />
         );

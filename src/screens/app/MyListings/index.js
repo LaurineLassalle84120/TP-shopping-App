@@ -19,7 +19,7 @@ import {styles} from './styles'
 // import FavoriteHomeItem from '../../../components/FavoriteHomeItem';
 
 
-const Panier = () => {
+const MyListings = () => {
     const navigation = useNavigation();
     const {user, setUser} = useContext(UserContext);
     const {APIProducts, setAPIProducts} = useContext(ProductsContext);
@@ -74,7 +74,7 @@ const Panier = () => {
     return (
         <SafeAreaView>
             <ScrollView>
-            <Header showSearch={false}  title="Cart"/>
+            <Header showSearch={false} showReturn={true} title="My Listings"/>
                 <View style={styles.container}>
                     
                     <FlatList
@@ -94,4 +94,4 @@ const Panier = () => {
     );
 };
 
-export default Panier;
+export default MyListings;

@@ -6,19 +6,22 @@ import Checkbox from '../../../components/checkbox';
 import Button from '../../../components/button';
 import Lien from '../../../components/lien';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Carousel from 'react-native-snap-carousel';
 
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../../../App';
+
 export default function Product({ route }) {
 
   const navigation = useNavigation();
   const {carts, setCarts} = useContext(CartsContext);
   const {APIProducts, setAPIProducts} = useContext(ProductsContext);
-  const { title,description,image,price,productId } = route.params;
+  const { title,description,image,price,productId,images } = route.params;
   const [productFavori,setProductFavori] = useState(false);
 
   useEffect(() => {
+    console.log("images",images)
     if (carts !== undefined ) {
       const panier = carts.carts[0].products;
       // console.log("panier",panier);
@@ -67,12 +70,34 @@ export default function Product({ route }) {
   const onPress=()=>{
     navigation.navigate("Home");
   }
+  //render du carrousel d'images
+  const renderItem = ({ item,index }) => {
+    console.log("items",item); 
+    console.log("items",typeof(item)); 
+    return (
+      <Image source={item} key={index}/>
+      // <Image source={item} style={styles.image} />
+    );
+  };
+
+
+    const imageStatic = ["https://i.dummyjson.com/data/products/3/1.jpg"]; 
   return (
     <>
       <SafeAreaView>
         <ScrollView>
           <View style={styles.container}>
             <Image source={{ uri: image }} style={styles.image}/>
+            {/* <View style={styles.carouselContainer}>
+              <Carousel
+                layout={'stack'}
+                data={imageStatic}
+                renderItem={renderItem}
+                sliderWidth={300} // Ajustez la largeur selon vos besoins
+                itemWidth={200} // Ajustez la largeur selon vos besoins
+                onSnapToItem = { index => this.setState({activeIndex:index}) } 
+              />
+            </View> */}
             <TouchableOpacity  activeOpacity={0.6} style={styles.buttonBack} onPress={onPress}>
               <Image source={require('../../../assets/back.png')} style={styles.icon}/>
             </TouchableOpacity >

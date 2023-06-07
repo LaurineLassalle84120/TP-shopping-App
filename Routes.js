@@ -12,6 +12,7 @@ import Favorites from './src/screens/app/Favorites';
 import Profile from './src/screens/app/Profile';
 import Product from './src/screens/app/Product';
 import Settings from './src/screens/app/Settings';
+import MyListings from './src/screens/app/MyListings';
 import Panier from './src/screens/app/Panier';
 import NewProduct from './src/screens/app/NewProduct';
 //Context
@@ -46,6 +47,12 @@ function MyTabs() {
           <FontAwesome  name="bookmark" color={color} size={26} />
         )
       }} name="Favorites" component={Favorites} />
+
+      <Tab.Screen options={{
+        tabBarIcon: ({ color }) => (
+          <FontAwesome  name="shopping-cart" color={color} size={26} />
+        )
+      }} name="Cart" component={Panier} />
 
       <Tab.Screen options={{
         tabBarIcon: ({ color }) => (
@@ -111,8 +118,8 @@ const Routes = () => {
               options={{  headerShown: false }}
             />
             <Stack.Screen
-              name="Panier"
-              component={Panier}
+              name="MyListings"
+              component={MyListings}
               options={{  headerShown: false }}
             />
 

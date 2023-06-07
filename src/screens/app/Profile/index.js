@@ -44,7 +44,7 @@ const Profile = () => {
                         <Text style={styles.name}>{user.firstName + " " + user.lastName}</Text>
                         <Text style={styles.mail}>{user.email}</Text>
                         <Pressable onPress={() => {
-                                navigation.navigate('Panier');
+                                navigation.navigate('MyListings');
                             }}>
                             <Card title="My Listings" description={`Already have ${lenghtCarts} listing`} showArrow="true" modeEdit={false}/>
                         </Pressable>

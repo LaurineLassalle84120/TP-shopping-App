@@ -95,5 +95,12 @@ export const styles = StyleSheet.create({
     },
     elevation: 4, // Élévation sur les plateformes Android
   }
+,
+carouselContainer:{
+  width: fullWidth,
+  height:"80%",
+  alignItems: 'center',
+  justifyContent: 'center',
+}
 
 })

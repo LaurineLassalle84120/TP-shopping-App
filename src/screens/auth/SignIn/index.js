@@ -65,10 +65,16 @@ export default function SignIn() {
       // console.log("SignIn:Carts:",v);
     
       setCarts(v);//on set la liste des favoris
-      setAPIPanier(v);//on set également la liste du panier avec les favori
+      setAPIPanier(v);//on récupère le cart pour la structure du panier
+      clearPanier();//on enlève les produits du panier
       }
       );
   }
+  //fonction de suppression des produits dans le panier
+  const clearPanier = () => {
+    const updatedPanier = { ...APIPanier, carts: [{ ...APIPanier.carts[0], products: [] }] };
+    setAPIPanier(updatedPanier);
+  };
 
   //fonction de récupération des produits
   const recupProducts = async () => {
