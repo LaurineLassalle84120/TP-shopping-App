@@ -71,6 +71,9 @@ const Panier = () => {
     // console.log("Panier:APIPanier:",APIPanier);
     }, [APIPanier]);//dès que le panier est set on initialise 
 
+
+    
+        
     
     return (
         <SafeAreaView>

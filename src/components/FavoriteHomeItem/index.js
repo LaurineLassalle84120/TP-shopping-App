@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef,useContext } from 'react';
-import {Text, Pressable, Image,View} from 'react-native';
+import {Text, Pressable, Image,View,Alert} from 'react-native';
 import {styles} from './styles';
 import { AntDesign } from '@expo/vector-icons';
 import { colors } from '../../utils/colors';
@@ -25,6 +25,7 @@ export default function FavoriteHomeItem({product,showCross,showTrash,onPress}) 
     };
     //fonction de suppression d'un produit dans le panier
     const removeFromPanier = (productId) => {
+        console.log(productId)
         const panierItems = APIPanier.carts[0].products; // Extraction du tableau de produits du panier
         const updatedPanier = panierItems.filter((product) => product.id !== productId);
         setAPIPanier({ ...APIPanier, carts: [{ ...APIPanier.carts[0], products: updatedPanier }] });
@@ -32,18 +33,27 @@ export default function FavoriteHomeItem({product,showCross,showTrash,onPress}) 
     //fonction d'ajout d'un produit dans le panier
     const addToPanier = (productId) => {
         // console.log(productId)
-        //on retrouve le produit dans le catalogue (APIProducts)
-        const product = APIProducts.products.find((product) => product.id === productId);
-        // console.log(product)
-        if (product!=undefined){
-            const panierItems = APIPanier.carts[0].products; // Extraction du tableau de produits
-            //rajoute le produit de la page au favori
-            const updatedPanier = [...panierItems, { id: productId,title:product.title,price:product.price,quantity:1 }];
-            //console.log("updatedCart",updatedCart)
-            // console.log("APIProductss:",APIProducts.products[])
-        
-            setAPIPanier({ ...APIPanier, carts: [{ ...APIPanier.carts[0], products: updatedPanier }] });
+        // console.log(APIPanier.carts[0])
+        //on regarde si le produit n'existe pas déjà dans le panier:
+        const productInPanier = APIPanier.carts[0].products.find((product) => product.id === productId);
+        // console.log(productInPanier)
+        if(productInPanier==undefined){//si le produit n'existe pas déjà dans le panier
+            //on retrouve le produit dans le catalogue (APIProducts)
+            const product = APIProducts.products.find((product) => product.id === productId);
+            // console.log(product)
+            if (product!=undefined){
+                const panierItems = APIPanier.carts[0].products; // Extraction du tableau de produits
+                //rajoute le produit de la page au favori
+                const updatedPanier = [...panierItems, { id: productId,title:product.title,price:product.price,quantity:1 }];
+                //console.log("updatedCart",updatedCart)
+                // console.log("APIProductss:",APIProducts.products[])
+
+                setAPIPanier({ ...APIPanier, carts: [{ ...APIPanier.carts[0], products: updatedPanier }] });
+            }
+        }else{
+            Alert.alert("Ce produit est déjà dans votre panier");
         }
+            
      
     };
     //lors de l'appuie sur la croix
@@ -54,7 +64,7 @@ export default function FavoriteHomeItem({product,showCross,showTrash,onPress}) 
     //lors de l'appuie sur la poubelle
     const onPressTrash = () => {
         // console.log(product.id);
-        removeFromPanier(product.id);//on enlève le produit au favori
+        removeFromPanier(product.id);//on enlève le produit du panier
     };
     //lors de l'appuie sur la chariot (panier)
     const onPressCart = () => {
