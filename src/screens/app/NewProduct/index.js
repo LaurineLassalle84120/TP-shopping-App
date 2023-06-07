@@ -33,9 +33,9 @@ const NewProduct =({ route }) => {
       });    
     const [selectedCategory, setSelectedCategory] = useState(APICategories[0]);
     const onChange = (key, value) => {
-        console.log(key)
-        console.log(APICategories[0])
-        console.log(APIProducts.products)
+        // console.log(key)
+        // console.log(APICategories[0])
+        // console.log(APIProducts.products)
         if (key=="price"){//si le champ est celui du prix
             if (/^\d*\.?\d*$/.test(value)) {//on autorise seulement les valeurs numériques et le point
                 setValues(v => ({ ...v, [key]: value }));
@@ -53,10 +53,10 @@ const NewProduct =({ route }) => {
 
     const onSubmit = async () => {  
         if(values.photo && values.title && selectedCategory && values.price){
-            console.log(values)   
-            console.log(selectedCategory)
-            console.log(APIProducts)  
-            console.log("lastProductIds",lastProductId)   
+            // console.log(values)   
+            // console.log(selectedCategory)
+            // console.log(APIProducts)  
+            // console.log("lastProductIds",lastProductId)   
             const newProduct = {
                 // brand: 'Nouvelle marque',
                 category: selectedCategory,
@@ -70,13 +70,13 @@ const NewProduct =({ route }) => {
                 thumbnail: values.photo,
                 title:  values.title,
               };
-              console.log("newProduct",newProduct)
+            //   console.log("newProduct",newProduct)
             const updatedProducts = [...APIProducts.products, newProduct];
             const updatedData = {
                 ...APIProducts,
                 products: updatedProducts,
               };
-            console.log("updatedData",updatedData)
+            // console.log("updatedData",updatedData)
             setAPIProducts(updatedData)
             navigation.navigate("Home")
         }else{

@@ -12,7 +12,7 @@ import Header from '../../../components/Header';
 //Navigation
 import { useNavigation } from '@react-navigation/native';
 //Contexts
-import {UserContext, ProductsContext, CartsContext, CategoriesContext} from '../../../../App'
+import {UserContext, ProductsContext, CartsContext, CategoriesContext, PanierContext} from '../../../../App'
 //Icons
 import { AntDesign } from '@expo/vector-icons';
 //Async Storage
@@ -31,6 +31,8 @@ export default function SignIn() {
   const {carts, setCarts} = useContext(CartsContext);
   const {APIProducts, setAPIProducts} = useContext(ProductsContext);
   const {APICategories, setAPICategories} = useContext(CategoriesContext);
+  const {APIPanier, setAPIPanier} = useContext(PanierContext);
+ 
 
   const onChange = (key, value) => {
     setValues(v => ({ ...v, [key]: value }));
@@ -61,9 +63,10 @@ export default function SignIn() {
     .then(res => res.json())
     .then(v => {
       // console.log("SignIn:Carts:",v);
-      setCarts(v);//on set le cartsContext
-
-    }
+    
+      setCarts(v);//on set la liste des favoris
+      setAPIPanier(v);//on set également la liste du panier avec les favori
+      }
       );
   }
 
@@ -98,6 +101,7 @@ export default function SignIn() {
     );
   }
 
+
   //on va chercher les informations personnelles du user
   const fetchUserInformations = async () => {
     const asyncFirstName = await getData("firstName");//on récupère dans le async storage le firstName
@@ -105,9 +109,9 @@ export default function SignIn() {
     const asyncEmail = await getData("email");//on récupère dans le async storage l'email
     
     if(asyncFirstName && asyncLastName && asyncEmail ){//si on a toutes les informations
-        console.log("asyncFirstName:",asyncFirstName)
-        console.log("asyncLastName:",asyncLastName)
-        console.log("asyncEmail:",asyncEmail)
+        // console.log("asyncFirstName:",asyncFirstName)
+        // console.log("asyncLastName:",asyncLastName)
+        // console.log("asyncEmail:",asyncEmail)
 
         setUser((prevUser) => ({//on va set le userContext
           ...prevUser,
@@ -150,7 +154,7 @@ export default function SignIn() {
           storeData("password",values.password)//stockage du password dans l'asyncStorage
           setUser(v)//sauvegarde du user dans le UserContext
           // console.log("user connect(v):",v)
-          //on récupère le panier du user
+          //on récupère les favoris du user
           recupCartUser(v.id);
           //on récupère les produits
           recupProducts();
@@ -158,6 +162,7 @@ export default function SignIn() {
           recupCategories();
           //on récupère les informations personnelles du user (AsyncStorage)
           fetchUserInformations();
+          // console.log("SignIn:APIPanier",APIPanier)
         }else{
           Alert.alert(v.message);
         }

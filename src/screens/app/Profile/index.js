@@ -11,7 +11,7 @@ import Header from '../../../components/Header';
 //Navigation
 import { useNavigation } from '@react-navigation/native';
 //Contexts
-import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../../../App';
+import {UserContext,ProductsContext,CartsContext,CategoriesContext,PanierContext} from '../../../../App';
 
 
 const Profile = () => {
@@ -19,19 +19,20 @@ const Profile = () => {
 
     const {user,setUser} = useContext(UserContext);//info du user
     const {carts,setCarts} = useContext(CartsContext);//panier du user
-    
+    const {APIPanier, setAPIPanier} = useContext(PanierContext);
     const [ lenghtCarts, setLenghtCarts ] = useState(0); //nbr d'item dans le panier (carts)
 
     const navigation = useNavigation();
 
     useEffect(() => {
-        if (carts !== undefined ) {
-            const cartItems = carts.carts[0].products;
+        if (APIPanier !== undefined ) {
+            const cartItems = APIPanier.carts[0].products;
             const cartItemsLength = cartItems.length;
 
             setLenghtCarts(cartItemsLength);
         }
-    }, [carts]);//dès que le panier est disponible
+        // console.log("Profile:APIPanier",APIPanier)
+    }, [APIPanier]);//dès que le panier est disponible
 
 
     return (

@@ -21,7 +21,7 @@ import {
 import ProductHomeItem from '../../../components/ProductHomeItem';
 import CategoryHomeItem from '../../../components/categoryHomeItem';
 import Header from '../../../components/Header';
-import {UserContext,ProductsContext,CartsContext,CategoriesContext} from '../../../../App';
+import {UserContext,ProductsContext,CartsContext,CategoriesContext,PanierContext} from '../../../../App';
 
 export default function Home() {
   
@@ -32,6 +32,7 @@ export default function Home() {
     const {APIProducts, setAPIProducts} = useContext(ProductsContext);
     const {carts, setCarts} = useContext(CartsContext);
     const {APICategories, setAPICategories} = useContext(CategoriesContext);
+    const {APIPanier, setAPIPanier} = useContext(PanierContext);
 
     //useState
     const [productFiltered, setProductFiltered] = useState([])
@@ -60,14 +61,26 @@ export default function Home() {
         if (APIProducts !== undefined) {
             setProductFiltered(APIProducts.products);
         }
+        // console.log("Home:carts",carts)
         
        
-    }, [APIProducts,APICategories]);//dès que les produits et les catégories sont set on initialise les states
+    }, [APIProducts,APICategories,APIPanier]);//dès que les produits et les catégories sont set on initialise les states
     // console.log("Home:user",user);
     // console.log("Home:products",APIProducts);
     // console.log("Home:carts ",carts);
     // console.log("Home:APICategories",APICategories);
     // console.log("Home:categories",categories);
+
+    // useEffect(() => {
+    //     if (carts !== undefined) {
+    //         // setAPIPanier(carts)
+    //     }
+    // }, [carts]);
+    // useEffect(() => {
+    //     if (APIPanier !== undefined) {
+    //         console.log("Home:APIPanier",APIPanier)
+    //     }
+    // }, [APIPanier]);
 
     //fonction de click sur la category
     const clickCat = (category) => {

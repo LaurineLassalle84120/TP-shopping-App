@@ -38,16 +38,17 @@ const Favorites = () => {
         const product = item.item;
 
         return (
-                <FavoriteHomeItem product={product} key={product.id} showCross={true} onPress={() => {
+                <FavoriteHomeItem product={product} key={product.id}  showCross={true} onPress={() => {
                     // console.log("product.id",);
                     let idProduct = product.id;
                     // console.log(APIProducts.products);
                     const productInCart = APIProducts.products.find((product) => product.id === idProduct);
                     // console.log("productInCart",productInCart.thumbnail)
+                    // console.log("product.description",productInCart.description)
                     navigation.navigate('Product', { 
                         title: product.title,
                         price: product.price,
-                        description: product.description,
+                        description: productInCart.description,//description non présente dans le cart, obligé d'aller la chercher dans products
                         image: productInCart.thumbnail,//image non présente dans le cart, obligé d'aller la chercher dans products
                         productId: product.id
                     })

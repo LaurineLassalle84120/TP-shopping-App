@@ -48,5 +48,14 @@ export const styles = StyleSheet.create({
   icon:{
     width:(width/ 15),
     height:(width/ 15)
+  },
+  iconsFav:{
+    display:"flex",
+    justifyContent:"center",
+    alignContent:"space-between"
+  },
+  cart:{
+    marginTop:"80%",
+    // paddingRight:4
   }
 })

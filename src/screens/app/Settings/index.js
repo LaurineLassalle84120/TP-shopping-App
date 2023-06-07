@@ -33,9 +33,9 @@ const Settings =({ route }) => {
     //fonction lors de l'appuie sur save (info personnelles)
     const onPressSave=()=>{
         if (firstNameValue && lastNameValue && emailValue)  {//si tous les champs ont été remplis
-            console.log("emailValue",emailValue)
-            console.log("firstNameValue",firstNameValue)
-            console.log("lastNameValue",lastNameValue)
+            // console.log("emailValue",emailValue)
+            // console.log("firstNameValue",firstNameValue)
+            // console.log("lastNameValue",lastNameValue)
             setUser((prevUser) => ({
                 ...prevUser,
                 email: emailValue,
@@ -62,12 +62,12 @@ const Settings =({ route }) => {
         //   setEmailValue(getData("email"));
         //   setUserNameValue(user.username);
         }
-        console.log(user)
+        // console.log(user)
       }, [user]);//a chaque changement de user (login)
 
     //fonction lors de l'appuie sur edit (infos personnelles)
     const onPressEdit=()=>{
-        console.log("edit");
+        // console.log("edit");
         setModeEdit(!modeEdit)
 
     }
