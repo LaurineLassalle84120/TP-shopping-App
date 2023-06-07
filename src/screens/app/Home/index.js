@@ -99,13 +99,11 @@ export default function Home() {
         } else {//sinon
             APIProducts.products.forEach(element => {
                 // console.log(element);
-         
                 // console.log(element.category);
                 if (element.category == choiceCat) {
                     // console.log("ça match");
                     // console.log("element:", element);
-
-                    productsFilt.push(element);//on ajoute les produits qui ont la catégory choisie
+                    productsFilt.push(element);//on ajoute les produits qui ont la catégorie choisie
                     // setProductFiltered=(choiceCategory)
                 }
             });
@@ -155,13 +153,32 @@ export default function Home() {
         // setKeyword(text);
         // console.log("text:",text)
         const uri = "search?q=" + text
+        let productsFilt = [];
 
         await fetch('https://dummyjson.com/products/search?q='+text)
         .then(res => res.json())
         .then(v => {
+            setProductFiltered(v.products)
+            setChoiceCategory("All")
             // console.log("Home:Search:",v);
             // setCarts(v);//on set le cartsContext
-            setProductFiltered(v.products);
+            // if (choiceCat == "All") {//si la category choisie est ALL
+            //     setProductFiltered(v.products);//on affiche directement la recherche
+    
+            // } else {//sinon il faut filtrer
+            //     v.products.forEach(element => {
+            //         // console.log(element);
+            //         // console.log(element.category);
+            //         if (element.category == choiceCat) {
+            //             // console.log("ça match");
+            //             // console.log("element:", element);
+            //             productsFilt.push(element);//on ajoute les produits qui ont la catégorie choisie
+            //             // setProductFiltered=(choiceCategory)
+            //         }
+            //     });
+            //     setProductFiltered(productsFilt);
+            // }
+            
           }
             );
     }
