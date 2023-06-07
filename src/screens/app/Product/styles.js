@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
 
     // paddingBottom:350,
     paddingBottom:"130%",
+    maxHeight:"130%",
     // height:"101%",
     position: 'relative',
   },

@@ -53,7 +53,8 @@ const MyListings = () => {
                     price: product.price,
                     description: productInCart.description,//description non présente dans le cart, obligé d'aller la chercher dans products
                     image: productInCart.thumbnail,//image non présente dans le cart, obligé d'aller la chercher dans products
-                    productId: product.id
+                    productId: product.id,
+                    images:productInCart.images
                 })
             }} />
         );

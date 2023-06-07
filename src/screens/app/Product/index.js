@@ -91,7 +91,8 @@ export default function Product({ route }) {
             {/* <Image source={{ uri: image }} style={styles.image}/> */}
             <View style={styles.carouselContainer}>
               <Carousel
-                layout={'stack'}
+                layout={'default'}
+                // layoutCardOffset={`18`}
                 data={images}
                 renderItem={renderItem}
                 sliderWidth={400} // Ajustez la largeur selon vos besoins
