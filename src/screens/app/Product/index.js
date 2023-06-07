@@ -75,7 +75,8 @@ export default function Product({ route }) {
     console.log("items",item); 
     console.log("items",typeof(item)); 
     return (
-      <Image source={item} key={index}/>
+ 
+      <Image source={{ uri: item }} style={styles.image} key={index}/>
       // <Image source={item} style={styles.image} />
     );
   };
@@ -87,17 +88,17 @@ export default function Product({ route }) {
       <SafeAreaView>
         <ScrollView>
           <View style={styles.container}>
-            <Image source={{ uri: image }} style={styles.image}/>
-            {/* <View style={styles.carouselContainer}>
+            {/* <Image source={{ uri: image }} style={styles.image}/> */}
+            <View style={styles.carouselContainer}>
               <Carousel
                 layout={'stack'}
-                data={imageStatic}
+                data={images}
                 renderItem={renderItem}
-                sliderWidth={300} // Ajustez la largeur selon vos besoins
-                itemWidth={200} // Ajustez la largeur selon vos besoins
-                onSnapToItem = { index => this.setState({activeIndex:index}) } 
+                sliderWidth={400} // Ajustez la largeur selon vos besoins
+                itemWidth={300} // Ajustez la largeur selon vos besoins
+                // onSnapToItem = { index => this.setState({activeIndex:index}) } 
               />
-            </View> */}
+            </View>
             <TouchableOpacity  activeOpacity={0.6} style={styles.buttonBack} onPress={onPress}>
               <Image source={require('../../../assets/back.png')} style={styles.icon}/>
             </TouchableOpacity >

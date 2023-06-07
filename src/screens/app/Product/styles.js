@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
   container: {
 
     // paddingBottom:350,
-    paddingBottom:"101%",
+    paddingBottom:"130%",
     // height:"101%",
     position: 'relative',
   },
@@ -66,11 +66,15 @@ export const styles = StyleSheet.create({
     
   },
   image:{
-    width:fullWidth,
-    height:"80%",
-    padding:4,
+    // width:fullWidth,
+    // height:"80%",
+    // padding:4,
   
-    objectFit:'cover',
+    // objectFit:'cover',
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
+    borderRadius: 10,
     // borderRadius:10
   },
   icon:{
@@ -98,7 +102,7 @@ export const styles = StyleSheet.create({
 ,
 carouselContainer:{
   width: fullWidth,
-  height:"80%",
+  height:"100%",
   alignItems: 'center',
   justifyContent: 'center',
 }
