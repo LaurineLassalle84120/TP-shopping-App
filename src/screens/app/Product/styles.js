@@ -74,7 +74,7 @@ export const styles = StyleSheet.create({
     // objectFit:'cover',
     width: '100%',
     height: '100%',
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     borderRadius: 10,
     // borderRadius:10
   },
